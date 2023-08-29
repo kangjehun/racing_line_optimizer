@@ -1,0 +1,8 @@
+{
+    "name": "ioniq5_engine",
+    "driving_command_coefficient" : "9.33710", 
+    "ax_upper_limit_low_speed" : "5.09841",
+    "ax_upper_limit_high_speed_coefficient" : "51.74014",
+    "ax_upper_limit_high_speed_power" : "-0.957",
+    "braking_command_coefficient" : "6.95"
+}
