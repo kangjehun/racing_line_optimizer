@@ -6,15 +6,16 @@ import multiprocessing as mp
 
 
 from converter import read_csv_track, read_osm_racingline, read_csv_best_alphas
-from converter import convert2osm, xy2xy
+from converter import convert2osm
+from utils import xy2xy, remove_duplicate_points
 from easydict import EasyDict as edict
-
 from track import Track
 from vehicle import Vehicle
 from plot import plot_track, plot_segment
 from racingline import RacingLine
 from tuning import TuningParameter
-from interface import get_user_input_init, UserInput
+from interface import UserInput
+from interface import get_user_input_init, init_setting
 from optimization import OptimizationResult
 
 
@@ -26,10 +27,10 @@ parser.add_argument('--vehicle', type=str, default='ioniq5.json', help='vehicle 
 parser.add_argument('--engine', type=str, default='ioniq5_engine.json', help='engine model filename')
 parser.add_argument('--best', type=str, default='best_racing_line.osm', help='best racing line filename')
 parser.add_argument('--data', type=str, default='real_racing_line.osm', help='real racing data filename')
+parser.add_argument('--initset', type=str, default='initset.csv', help='initset result filename')
 parser.add_argument('--init_best', type=str, default='best_racing_line_alphas.csv', help='best racing line alphas filename')
 parser.add_argument('--init_new', type=str, default='new_racing_line_alphas.csv', help='new racing line alphas filename')
 # data output
-# parser.add_argument('--initial', type=str, default='initial_racing_line', help='initial racing line filename')
 parser.add_argument('--new', type=str, default='new_racing_line', help='new racing line filename')
 # data type
 parser.add_argument('--csv', action='store_true', help='input track data type is csv, default is osm')
@@ -44,77 +45,95 @@ parser.add_argument('--debug_tuning', action='store_true', help='enable debug mo
 parser.add_argument('--debug_track', action='store_true', help='enable debug mode : track info')
 parser.add_argument('--debug_segment', action='store_true', help='enable debug mode : segment info')
 parser.add_argument('--debug_init', action='store_true', help='enable debug mode : init alphas info')
-# opt
+# interface
 parser.add_argument('--re', action='store_true', help='re-optimize with additional data')
-parser.add_argument('--noopt', action='store_true', help='no optimization, visulaization only') 
+parser.add_argument('--noopt', action='store_true', help='no optimization, visulaization only')
+parser.add_argument('--init_setting', action='store_true', help='Automatic initial setting for racingline optimization')
+# parsing arguments
 configs = edict(vars(parser.parse_args()))
 
+### Beginning of Code ###
+print("[ Beginning of code ]\n")
+
 ### Check the # of CPU Cores ###
+print("Check # of CPU cores for parallel computation")
 print(mp.cpu_count(), mp.current_process().name)
+print()
 
 ### Generate Path ###
+print("Creating path...")
 # input path
 if configs.csv :
     path_track = configs.track + '.csv'
 else :
-    path_track = configs.track + '.csv'
     # TODO : use osm
+    path_track = configs.track + '.csv'
     # path_track = configs.track + '.osm'
+path_init_track = os.path.join('./initset/example/', path_track)
+path_init_param_corner = os.path.join('./initset/example/', configs.corner)
+path_init_param_default = os.path.join('./initset/example/', configs.default)
 path_track = os.path.join('./track/', path_track)
 path_vehicle = os.path.join('./model/vehicle/', configs.vehicle)
 path_engine = os.path.join('./model/engine/', configs.engine)
 path_best_racingline = os.path.join('./best/', configs.best)
+path_initset = os.path.join('./initset/', configs.initset)
 path_init_best= os.path.join('./best/', configs.init_best)
 path_init_new= os.path.join('./result/', configs.init_new)
 path_data_racingline = os.path.join('./data/', configs.data)
 path_param_default = os.path.join('./param/', configs.default)
 path_param_corner = os.path.join('./param/', configs.corner)
 # output path
-# path_initial_racingline  = os.path.join('./initial/', configs.initial + '.osm')
-# path_initial_racingline_plot = os.path.join('./initial/', configs.initial + '_plot.png')
-# path_initial_racingline_result = os.path.join('./initial/', configs.initial + '_result.txt')
-# path_initial_racingline_alphas = os.path.join('./initial/', configs.initial + '_alphas.csv')
 path_new_racingline  = os.path.join('./result/', configs.new + '.osm')
 path_new_racingline_plot = os.path.join('./result/', configs.new + '_plot.png')
 path_new_racingline_result = os.path.join('./result/', configs.new + '_result.txt')
 path_new_racingline_alphas = os.path.join('./result/', configs.new + '_alphas.csv')
+print("Done!\n")
 if configs.debug_path:
     print("[ Path ]")
     print("1. INPUT PATH")
-    print("track        : ", path_track)
-    print("vehicle      : ", path_vehicle)
-    print("engine       : ", path_engine)
+    print("init track   :", path_init_track)
+    print("init corner  :", path_init_param_corner)
+    print("init default :", path_init_param_default)
+    print("track        :", path_track)
+    print("vehicle      :", path_vehicle)
+    print("engine       :", path_engine)
     print("best line    :", path_best_racingline)
+    print("initset      :", path_initset)
     print("init best    :", path_init_best)
     print("init new     :", path_init_new)
-    print("data         : ", path_data_racingline)
-    print("corner       : ", path_param_corner)
-    print("default      : ", path_param_default)
+    print("data         :", path_data_racingline)
+    print("corner       :", path_param_corner)
+    print("default      :", path_param_default)
     print("2. OUTPUT PATH")
-    # print("initial line         : ", path_initial_racingline)
-    # print("initial plot         : ", path_initial_racingline_plot)
-    # print("initial result       : ", path_initial_racingline_result)
-    # print("initial alphas       : ", path_initial_racingline_alphas)
     print("new line             : ", path_new_racingline)
     print("new plot             : ", path_new_racingline_plot)
     print("new result           : ", path_new_racingline_result)
     print("new alphas           : ", path_new_racingline_alphas)
 
 ### Open file to store the optimization results ###
-# open the txt file in write mode to write the titles
-# new_line = "[ Initial Optimization Result ]\n"
-# with open(path_initial_racingline_result, 'w') as file:
-#     file.write(new_line)
-new_line = "[ New Optimization Result ]\n"
-with open(path_new_racingline_result, 'w') as file:
-    file.write(new_line)
+if not configs.init_setting :
+    new_line = "[ New Optimization Result ]\n"
+    with open(path_new_racingline_result, 'w') as file:
+        file.write(new_line)
 
 ### Read track data ###
-if configs.csv :
-    mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_track)
+print("Read track data...")
+if not configs.init_setting :
+    if configs.csv :
+        mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_track)
+    else :
+        # TODO : use osm (Not implemented yet)
+        mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_track)
 else :
-    # TODO : use osm
-    mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_track)
+    if configs.csv :
+        mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_init_track)
+    else :
+        # TODO : use osm (Not implemented yet)
+        mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr = read_csv_track(path_init_track)
+filtered_mid_xy_arr, filtered_arrays = remove_duplicate_points(mid_xy_arr, [wl_arr, wr_arr, slope_arr, mu_arr])
+wl_arr, wr_arr, slope_arr, mu_arr = filtered_arrays
+mid_xy_arr = filtered_mid_xy_arr
+print("Done!\n")
 if configs.debug_track_raw:
     print("[ Track Raw Data ]")
     print("track mid xy arr         \n", mid_xy_arr)
@@ -124,36 +143,46 @@ if configs.debug_track_raw:
     print("mu arr                   \n", mu_arr)
 
 ### Read references ###
-# best racing line
-if configs.re or configs.noopt :
-    best_racingline = read_osm_racingline(path_best_racingline)
-if configs.noopt :
-    new_racingline = read_osm_racingline(path_new_racingline)
-if configs.re :
-    data_racingline = read_osm_racingline(path_data_racingline)
-# alpha values for initial racing line
-if configs.re :
-    init_best_alphas_left, init_best_alphas_right = read_csv_best_alphas(path_init_best)
-    init_new_alphas_left, init_new_alphas_right = read_csv_best_alphas(path_init_new)
-if configs.re and configs.debug_init:
-    print("best alphas (left)")
-    print(init_best_alphas_left)
-    print("best alphas (right)")
-    print(init_best_alphas_right)
-    print("new alphas (left)")
-    print(init_new_alphas_left)
-    print("new alphas (right)")
-    print(init_new_alphas_right)
+if not configs.init_setting :
+    print("Reading reference racing lines...")
+    # racing lines
+    if configs.re or configs.noopt :
+        best_racingline = read_osm_racingline(path_best_racingline)
+    if configs.noopt :
+        new_racingline = read_osm_racingline(path_new_racingline)
+    if configs.re :
+        data_racingline = read_osm_racingline(path_data_racingline)
+    # alpha values for initial racing line
+    if configs.re :
+        init_best_alphas_left, init_best_alphas_right = read_csv_best_alphas(path_init_best)
+        init_new_alphas_left, init_new_alphas_right = read_csv_best_alphas(path_init_new)
+    print("Done!\n")
+    if configs.re and configs.debug_init:
+        print("best alphas (left)")
+        print(init_best_alphas_left)
+        print("best alphas (right)")
+        print(init_best_alphas_right)
+        print("new alphas (left)")
+        print(init_new_alphas_left)
+        print("new alphas (right)")
+        print(init_new_alphas_right)
 
 ### Create tuning parameters ###
-tuning_parameter = TuningParameter(mid_xy_arr, path_param_corner, path_param_default)
-# update track data (slope and friction coefficient)
+print("Creating tuning parameters...")
+if configs.init_setting :
+    tuning_parameter = TuningParameter(mid_xy_arr, path_init_param_corner, path_init_param_default)
+else :
+    tuning_parameter = TuningParameter(mid_xy_arr, path_param_corner, path_param_default)
+# update track data (measured slope and friction coefficient data)
 tuning_parameter.update_with_data(road_slope_rad=slope_arr, mu=mu_arr)
 tuning_parameter.update_default()
+print("Done!\n")
 
 ### Create track ###
+print("Creating track...")
 track = Track(mid_xy_arr, wl_arr, wr_arr, slope_arr, mu_arr, \
               tuning_parameter.alpha_left_max, tuning_parameter.alpha_right_max)
+print("Done!\n")
 if configs.debug_track:
     print("[ Track Info ]")
     print("track is closed   : ", track.closed)
@@ -188,11 +217,53 @@ if configs.debug_tuning:
     # print("alpha_right_max      :", tuning_parameter.alpha_right_max)
     # print("road_slope_rad       :", tuning_parameter.road_slope_rad)   
 
+### Analyze the segments of track and summarize ###
+# [param] corner detection parameters
+print("Analyzing the segments of track...")
+corners, straights = track.segments(tuning_parameter.k_min, \
+                                    tuning_parameter.corner_length_min, \
+                                    tuning_parameter.straight_length_min)
+print("[ Track Segments Info ]")
+if corners.ndim == 1:
+    if corners.size == 0:
+        print("Corners : Not exists ")
+        num_of_corner = 0
+    else : 
+        print("Corners : 1")
+        num_of_corner = 1
+else : 
+    print("Corners : 1 ~", corners.shape[0])
+    num_of_corner = corners.shape[0]
+
+if straights.ndim == 1:
+    if straights.size == 0:
+        print("Straights : Not exists ")
+        num_of_straight = 0
+    else : 
+        print("Straights : 1")
+        num_of_straight = 1
+else : 
+    print("Straights : 1 ~", straights.shape[0])
+    num_of_straight = straights.shape[0]
+print("Done!\n")
+if configs.debug_segment:
+    print("Corners      \n", corners)
+    print("Straights    \n", straights)
+    print()
+
+### Initial Setting ###
+if configs.init_setting :
+    init_setting(corners, straights, track, path_initset)
+    pass
+
 ### Read vehicle data from json file ###
+print("Reading vehicle data...")
 vehicle = Vehicle(path_vehicle, path_engine)
+print("Done!")
 
 ### Upate tuning parameters with real racing data if exists ###
 if configs.re :
+    print("Update tuning parameters with real racing data...")
     if data_racingline is not None :
         # parse the real racing line data
         data_src_xy_arr, data_v_arr, data_ax_arr, data_ay_arr, \
@@ -226,7 +297,10 @@ if configs.re :
                                           alpha_left_max=data_alpha_left_max_arr,\
                                           alpha_right_max=data_alpha_right_max_arr,\
                                           road_slope_rad=data_road_slope_rad_arr)
+    else :
+        print("Warning : No real racing line data. update tuning parameter with default values")
     tuning_parameter.update_default()
+    print("Done!\n")
 if configs.re and configs.debug_tuning:
     print("4. UPDATED PARAMS")
     print("mu                   :", tuning_parameter.mu)
@@ -240,45 +314,14 @@ if configs.re and configs.debug_tuning:
     # print("alpha_right_max      :", tuning_parameter.alpha_right_max)
     # print("road_slope_rad       :", tuning_parameter.road_slope_rad)
 
-### Analyze the segments of track and summarize ###
-# [param] corner detection parameters
-corners, straights = track.segments(tuning_parameter.k_min, \
-                                    tuning_parameter.corner_length_min, \
-                                    tuning_parameter.straight_length_min)
-print("[ Track Segments Info ]")
-if corners.ndim == 1:
-    if corners.size == 0:
-        print("Corners : Not exists ")
-        num_of_corner = 0
-    else : 
-        print("Corners : 1")
-        num_of_corner = 1
-else : 
-    print("Corners : 1 ~", corners.shape[0])
-    num_of_corner = corners.shape[0]
-
-if straights.ndim == 1:
-    if straights.size == 0:
-        print("Straights : Not exists ")
-        num_of_straight = 0
-    else : 
-        print("Straights : 1")
-        num_of_straight = 1
-else : 
-    print("Straights : 1 ~", straights.shape[0])
-    num_of_straight = straights.shape[0]
-if configs.debug_segment:
-    print("Corners      \n", corners)
-    print("Straights    \n", straights)
-
 ### Optimization & Visualization ###
 save = False
 if configs.noopt:
     """ Visualization only """
     if new_racingline is None :
-        sys.exit("new racingline is not exists, please check result folder or file name")  
+        print("Warning: new racingline is not exists, please check result folder or file name")  
     if best_racingline is None :
-        sys.exit("best racingline is not exists, please check result folder or file name")  
+        print("Warning: best racingline is not exists, please check best folder or file name")  
     plot_track(track, corners, straights, new=new_racingline, best=best_racingline)
 else:
     """ Optimize track """
@@ -295,7 +338,7 @@ else:
         # TODO : First opt
         sys.exit("First opt is not implemented yet")
     elif user_input_init == UserInput.QUIT : 
-        sys.exit("Quit by User")
+        sys.exit("Quit by user")
     elif user_input_init == UserInput.RE: # First 
         print("\n[ Re-opt : completely re-optimization without use of initial racing line ]")
         # run optimization
@@ -314,9 +357,7 @@ else:
         print("Final cost           = ", opt_res.cost)
         print("Run time             = {:.3f}".format(opt_res.run_time))
         print("Lap time             = {:.3f}".format(racingline.lap_time()))
-        # [DEBUG]
-        if configs.debug_stop:
-            sys.exit("Stop for debugging")
+        
         # save results
         # plot (png)
         save = True
@@ -358,21 +399,11 @@ else:
         init_alphas_left = init_new_alphas_left
         init_alphas_right = init_new_alphas_right
 
-    print("[ End of Code ]")
+# [DEBUG]
+if configs.debug_stop:
+    sys.exit("Stop for debugging")
 
-
-    # print("init alphas left")
-    # print(init_alphas_left)
-    # print("init alphas left")
-    # print(init_alphas_right)
-
-    # TODO
-    # With init_alphas_left & init_alphas_right, Do lap time optimization
-
-    
-
-
-
+print("[ End of Code ]")
 
 ##################################################################################
         

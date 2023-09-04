@@ -3,7 +3,7 @@ import json
 import sys
 
 from utils import is_closed
-from converter import xy2xy
+from utils import xy2xy
 
 ###############################################################################
 
@@ -32,7 +32,14 @@ class TuningParameter:
             self.k_min = param_corner["K_MIN"]
             self.straight_length_min = param_corner["STRAIGHT_LENGTH_MIN"]
             self.corner_length_min = param_corner["CORNER_LENGTH_MIN"]
+            if self.straight_length_min <= 1 :
+                print("STRAIGHT_LENGTH_MIN should be larger than 1m")
+                sys.exit("Please revise corner.json file in param folder")
+            if self.corner_length_min < 1 :
+                print("CORNER_LENGTH_MIN should be larger than 1m")
+                sys.exit("Please revise corner.json file in param folder")
         else :
+            print("Warning : There is no corner.json file in param folder, set default values")
             self.k_min = 0.020
             self.straight_length_min = 10
             self.corner_length_min = 20

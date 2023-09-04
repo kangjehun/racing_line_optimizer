@@ -21,6 +21,8 @@ class Track:
         self.alpha_left_max = alpha_left_max
         self.alpha_right_max = alpha_right_max
         self.generate_boundaries()
+        # print(self.mid_xy_coordinates)
+        # print(self.closed)
         self.mid_spline = Line(self.mid_xy_coordinates, self.closed)
         self.mid_length = self.mid_spline.dists[-1]
         self.mid_ns = math.ceil(self.mid_length) + 1 # number of samples of spline

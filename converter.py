@@ -368,6 +368,7 @@ def read_csv_best_alphas(input_csv_best_alphas_file_name):
     except Exception as e:
         print("Warning: ", e)
         return None, None
+    
 def read_csv_track(input_csv_track_file_name):
     """ read csv tack data. """
     try:
@@ -405,87 +406,31 @@ def read_csv_track(input_csv_track_file_name):
         return xy_arr, wl_arr, wr_arr, slope_arr, mu_arr
     
     except Exception as e:
-        print("Error:", e)
+        sys.exit(e)
         return None, None, None, None, None
-
-def xy2xy(v_arr, src_xy_arr, src_is_closed, dest_xy_arr, dest_is_closed):
-    """ Convert v_arr from src_xy_arr size to dest_xy_arr size"""
-    src_size = len(src_xy_arr[0]) - int(src_is_closed)
-    dest_size = len(dest_xy_arr[0]) - int(dest_is_closed)
-    # print(v_arr) # [DEBUG]
-    # print("track :", src_xy_arr) #[DEBUG]
-    # print("spline:", dest_xy_arr) #[DEBUG]
-    # v_arr_size = len(v_arr) - int(src_is_closed) #[DEBUG]
-    # print("v_arr_size:", v_arr.size) #[DEBUG]
-    # print("src size:", src_size) #[DEBUG]
-    # print("dest_size:", dest_size) #[DEBUG]
-    # print("src_is_closed:", src_is_closed) #[DEBUG]
-    v_arr_converted = np.empty(dest_size)  
-
-    min_distance = float('inf')
-    distance = float('inf')
-    closest_src_point = None
-    for j in range(src_size):
-        distance = np.linalg.norm(dest_xy_arr[:,0] - src_xy_arr[:,j])
-        if distance < min_distance:
-            min_distance = distance
-            closest_src_point = j
-            # print(closest_src_point) #[DEBUG]
-    v_arr_converted[0] = v_arr[closest_src_point]
-    for i in range(1, dest_size):
-        min_distance = float('inf')
-        is_updated = False
-        # print(">i:", i) #[DEBUG]
-        for j in range(src_size if src_is_closed else (src_size - closest_src_point)):
-            idx_current = (closest_src_point + j) % src_size
-            # print("closed loop count : ", src_size) #[DEBUG]
-            # print("j: ", j) #[DEBUG]
-            # print("idx_current: ", idx_current) #[DEBUG]
-            # print("dest_size : ", dest_size) #[DEBUG]
-            # print("open loop count", src_size - closest_src_point) #[DEBUG]
-            distance = np.linalg.norm(dest_xy_arr[:, i] - src_xy_arr[:, idx_current])
-            if distance < min_distance:
-                min_distance = distance
-                closest_src_point = idx_current
-            else:
-                # print("closest point: ", closest_src_point) #[DEBUG]
-                v_arr_converted[i] = v_arr[closest_src_point]
-                is_updated = True
-                break
-        if not is_updated : v_arr_converted[i] = v_arr[closest_src_point]
-    return v_arr_converted
-
-
-def divide_alphas(alphas):
-    """divide alphas [-1, 1] to alphas_left and alphas_right [0, 1]"""
-    alphas_left = np.zeros_like(alphas)
-    alphas_right = np.zeros_like(alphas)
-    for i, alpha in enumerate(alphas):
-        if -1 <= alpha <= 0:
-            alphas_left[i]  = abs(alpha)
-            alphas_right[i] = 0
-        elif 0 < alpha <= 1:
-            alphas_left[i]  = 0
-            alphas_right[i] = alpha
+    
+def read_csv_initset(input_csv_initset_file_name):
+    """ Read and update initset.csv data using csv library. """
+    try:
+        initset_data = []
+        with open(input_csv_initset_file_name, 'r', newline='') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            initset_data = list(csv_reader)
+        # print(initset_data) # [DEBUG]
+        initset_value = initset_data[0]['initset'].lower()
+        # print(initset_value) # [DEBUG]
+        if initset_value == 'false':
+            initset_data[0]['initset'] = 'True'
+            with open(input_csv_initset_file_name, 'w', newline='') as csv_file:
+                fieldnames = initset_data[0].keys()
+                csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                csv_writer.writeheader()
+                csv_writer.writerows(initset_data)
+        elif initset_value == 'true':
+            print("Warning : Initial setting has been done before, it will be reset and performed again")
         else:
-            raise ValueError("Elements in alphas must be within the range [-1, 1]")
-    return alphas_left, alphas_right
-
-
-def merge_alphas(alphas_left, alphas_right):
-    if not all(0 <= alpha_left <= 1 for alpha_left in alphas_left) \
-       or not all(0 <= alpha_right <= 1 for alpha_right in alphas_right):
-        raise ValueError("All elements in alphas_left and alphas_right must be within the range [0, 1]")
-    if alphas_left.shape != alphas_right.shape:
-        raise ValueError("alphas_left and alphas_right must have the same size")
-    for alpha_left, alpha_right in zip(alphas_left, alphas_right):
-        if alpha_left != 0 and alpha_right != 0:
-            raise ValueError("Both alphas_left and alphas_right cannot have non-zero values for the same index")
-    alphas = alphas_left * -1 + alphas_right
-    return alphas
-
-def normalize_alphas(alphas, alpha_min=-1, alpha_max=1):
-    return (alphas-alpha_min)/(alpha_max-alpha_min)
-
-def reverse_normalize_alphas(norm_alphas, alpha_min=-1, alpha_max=1):
-    return (norm_alphas * (alpha_max - alpha_min)) + alpha_min
+            sys.exit("Invalid value found for 'initset' in ./initset/initset.csv. It should be boolean value")
+        return initset_data
+    except Exception as e:
+        sys.exit(e)
+        return None

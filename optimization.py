@@ -2,8 +2,9 @@ import numpy as np
 import random
 import time
 import matplotlib.pyplot as plt
+import ray
 
-from converter import divide_alphas, merge_alphas, normalize_alphas, reverse_normalize_alphas
+from utils import divide_alphas, merge_alphas, normalize_alphas, reverse_normalize_alphas
 
 
 class OptimizationResult:
@@ -32,8 +33,8 @@ class optimizer:
     def __init__(self, costfunc, getxy, getTrack, x0, method, bounds, \
                  start, mid1, mid2, end, \
                  desired_cost=20, curvature_compromise_epsilon=1, \
-                 delta_straight=0.15, delta_corner=0.20, \
-                 max_iteration=5000, num_of_population=100, \
+                 delta_straight=0.20, delta_corner=0.20, \
+                 max_iteration=5000, num_of_population=1000, \
                  plot_iteration_max=1000):
         self.costfunc           = costfunc
         self.getxy              = getxy
@@ -57,6 +58,13 @@ class optimizer:
         self.optimize()
 
     def optimize(self):
+        # remote function of Ray
+        @ray.remote
+        def compute_rankedsolution(i, sol, costfunc):
+            eps = sol[i][0]
+            alphas = sol[i][1:]
+            return (eps * costfunc(alphas), sol[i])
+        
         # print("num_of_samples", self.num_of_samples) #[DEBUG]
         costfunc = self.costfunc
         getxy = self.getxy
@@ -91,6 +99,9 @@ class optimizer:
         track_right_opt_boundary = np.array(track_right_opt_boundary)
         track_right_opt_boundary_x = track_right_opt_boundary[:, 0]
         track_right_opt_boundary_y = track_right_opt_boundary[:, 1]
+
+        # Initialize Ray
+        ray.init()
 
         # variable to store results
         opt_res = self.opt_res
@@ -158,12 +169,12 @@ class optimizer:
         t0 = time.time()
         for gen in range(M):
             try : 
+                rankedsolutions = []
                 # termination condition of optimization 1 : reach the desired cost 
                 if opt_res.cost < desired_cost:
                     opt_res.success = True
                     opt_res.message = "The desired cost is reached!"
                     break
-                rankedsolutions = []
                 # termination condition 2: solution is converged
                 if last_update_count == 0:
                     if opt_res.cost < desired_cost:
@@ -171,16 +182,20 @@ class optimizer:
                     opt_res.message = "The solution is converged..."
                     break
                 
-                # TODO : Need to be parallelized
+                # Parallelized computation
+                sol_id = ray.put(sol)
+                futures = [compute_rankedsolution.remote(i, sol_id, costfunc) for i in range(N)]
+                rankedsolutions = ray.get(futures)
+
                 ################################################################
-                for i in range(N):
-                    print("I'm solving solution ", i)
-                    eps = sol[i][0]
-                    alphas = sol[i][1:]
-                    rankedsolutions.append((eps * costfunc(alphas), sol[i]))
+                # Non parallelized computation
+                # for i in range(N):
+                #     print("I'm solving solution ", i)
+                #     eps = sol[i][0]
+                #     alphas = sol[i][1:]
+                #     rankedsolutions.append((eps * costfunc(alphas), sol[i]))
                 ################################################################
 
-                # TODO : merge the result from the parallelized optimization
                 rankedsolutions.sort(key=lambda x: x[0])
                 # Update opt_res only if current cost is lower
                 if opt_res.cost > rankedsolutions[0][0]:
@@ -297,6 +312,8 @@ class optimizer:
         # Turn off interactive mode after the loop completes
         plt.ioff()
         plt.show(block=False)  # Display the final plot
+        # Shutdown Ray
+        ray.shutdown()
         return opt_res
 
         

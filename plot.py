@@ -39,7 +39,6 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
              'k.', markersize=0.1, marker='x', label='Midline', zorder=2)
     
     # Plot segment information
-
     if corners.ndim == 1:
         if corners.size == 0:
             # print("No corners")
@@ -181,15 +180,25 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
     )
     handles, labels = subplot.get_legend_handles_labels()
     dict_labels_handles = dict(zip(labels, handles))
-    if best and new :
+    if best and new and racingline:
+        labels = ['Best racingline', 'New racingline', 'Racing line']
+    elif best and new:
         labels = ['Best racingline', 'New racingline']
-        
-    elif best :
+    elif best and racingline:
         labels = ['Best racingline', 'Racing line']
+    elif new and racingline:
+        labels = ['New racingline', 'Racing line']
+    elif best :
+        labels = ['Best racingline']
+    elif new :
+        labels = ['New racingline']
+    elif racingline :
+        labels = ["Racing line"]
     else :
-        labels = ['Racing line']
-    handles = [dict_labels_handles[l] for l in labels]
-    subplot.legend(handles, labels, **config_legend)
+        labels = []
+    if len(labels) != 0:
+        handles = [dict_labels_handles[l] for l in labels]
+        subplot.legend(handles, labels, **config_legend)
 
     # Plot
     plt.title('Track Info')

@@ -1,4 +1,5 @@
 import numpy as np
+
 from scipy.interpolate import splev, splprep
 
 class Line:

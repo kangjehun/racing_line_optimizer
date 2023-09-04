@@ -8,7 +8,7 @@ from spline import Line
 from velocity import VelocityProfile
 from scipy.optimize import Bounds, minimize
 from tqdm import tqdm
-from converter import divide_alphas, merge_alphas
+from utils import divide_alphas, merge_alphas
 from optimization import OptimizationResult, optimizer
 
 import matplotlib.pyplot as plt
