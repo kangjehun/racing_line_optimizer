@@ -295,10 +295,14 @@ def read_osm_racingline(input_osm_file_name, lon_0 = 127.20587, lat_0 = 37.29687
         # xy
         lat = float(input_node.attrib['lat'])
         lon = float(input_node.attrib['lon'])
-        # alphas
+        utm_x, utm_y, _, _ = conversion.from_latlon(lat, lon)
+        utm_x = utm_x - utm_x_origin
+        utm_y = utm_y - utm_y_origin
+        # profiles
         v  = float(input_node.find("tag[@k='speed']").attrib['v'])
         ax = float(input_node.find("tag[@k='ax']").attrib['v'])
         ay = float(input_node.find("tag[@k='ay']").attrib['v'])
+        # params
         mu = float(input_node.find("tag[@k='mu']").attrib['v'])
         ax_upper_limit = float(input_node.find("tag[@k='ax_upper_limit']").attrib['v'])
         ax_lower_limit = float(input_node.find("tag[@k='ax_lower_limit']").attrib['v'])
@@ -309,16 +313,12 @@ def read_osm_racingline(input_osm_file_name, lon_0 = 127.20587, lat_0 = 37.29687
         alpha_left_max = float(input_node.find("tag[@k='alpha_left_max']").attrib['v'])
         alpha_right_max = float(input_node.find("tag[@k='alpha_right_max']").attrib['v'])
         road_slope_rad = float(input_node.find("tag[@k='road_slope_rad']").attrib['v'])
-        # vel_gain = float(input_node.find("tag[@k='vel_profile_gain']").attrib['v']
-        utm_x, utm_y, _, _ = conversion.from_latlon(lat, lon)
-        utm_x = utm_x - utm_x_origin
-        utm_y = utm_y - utm_y_origin
-        utm_xy = np.array([[utm_x, utm_y]])
         # create array
+        utm_xy = np.array([[utm_x, utm_y]])
         v = np.array([v])
         ax = np.array([ax])
-        ay = np.array([ay])
-        mu = np.array([mu])
+        ay = np.array([ay]) 
+        mu = np.array([mu]) 
         ax_upper_limit = np.array([ax_upper_limit])
         ax_lower_limit = np.array([ax_lower_limit])
         ay_upper_limit = np.array([ay_upper_limit])
@@ -333,7 +333,6 @@ def read_osm_racingline(input_osm_file_name, lon_0 = 127.20587, lat_0 = 37.29687
         v_arr = np.append(v_arr, v)
         ax_arr = np.append(ax_arr, ax)
         ay_arr = np.append(ay_arr, ay)
-        # read tuning parameters of racing line
         mu_arr = np.append(mu_arr, mu)
         ax_upper_limit_arr = np.append(ax_upper_limit_arr, ax_upper_limit)
         ax_lower_limit_arr = np.append(ay_lower_limit_arr, ay_lower_limit)
@@ -347,7 +346,7 @@ def read_osm_racingline(input_osm_file_name, lon_0 = 127.20587, lat_0 = 37.29687
 
     utm_xy_arr = utm_xy_arr.reshape(-1, 2)
     utm_xy_arr = utm_xy_arr.transpose()
-    # print(utm_xy_arr) # [DEBUG]
+    print("utm_xy_arr : \n", utm_xy_arr) # [DEBUG]
     return utm_xy_arr, v_arr, ax_arr, ay_arr, mu_arr, \
            ax_upper_limit_arr, ax_lower_limit_arr, ay_upper_limit_arr, ay_lower_limit_arr, \
            Cb_arr, Cd_arr, alpha_left_max_arr, alpha_right_max_arr, road_slope_rad_arr
@@ -378,8 +377,6 @@ def read_csv_track(input_csv_track_file_name):
         wr = []
         slope = []
         friction_coefficient = []
-        alphas_left = []
-        alphas_right = []
         
         with open(input_csv_track_file_name, 'r') as csv_file:
             csv_reader = csv.DictReader(csv_file)
@@ -409,8 +406,13 @@ def read_csv_track(input_csv_track_file_name):
         sys.exit(e)
         return None, None, None, None, None
     
+def read_osm_tract(input_osm_track_file_name):
+    """read osm track data."""
+    # TODO
+    return None
+    
 def read_csv_initset(input_csv_initset_file_name):
-    """ Read and update initset.csv data using csv library. """
+    """ Read and update initset.csv data. """
     try:
         initset_data = []
         with open(input_csv_initset_file_name, 'r', newline='') as csv_file:
@@ -431,6 +433,47 @@ def read_csv_initset(input_csv_initset_file_name):
         else:
             sys.exit("Invalid value found for 'initset' in ./initset/initset.csv. It should be boolean value")
         return initset_data
+    except Exception as e:
+        sys.exit(e)
+        return None
+    
+    
+def read_csv_track_segment_indices(input_csv_initset_file_name):
+    """ Read track segment indices data. """
+    try:
+        segment_indices = [[]]
+        with open(input_csv_initset_file_name, 'r', newline='') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            initset_data = list(csv_reader)
+
+        initset_value = initset_data[0]['initset'].lower()
+
+        if initset_value == 'false':
+            sys.exit("Do init setting first")
+        elif initset_value == 'true':
+            num_columns = len(initset_data[0]) - 1  # Subtract 1 for 'initset' column
+            # Initialize a list to store each column
+            column_lists = [[] for _ in range(num_columns)]
+            # Iterate through the rows in initset_data
+            for row in initset_data:
+                # Iterate through the columns (excluding 'initset' column)
+                for i in range(1, num_columns + 1):
+                    column_name = f'segment{i}'  
+                    column_value = int(float(row[column_name]))  
+                    column_lists[i - 1].append(column_value)  
+            # Transpose the column_lists to get segment_indices
+            segment_indices = list(map(list, zip(*column_lists)))
+            # Remove the last list from segment_indices
+            segment_indices.pop()
+            # Duplicate the 2nd list as the 3rd list
+            second_list = segment_indices[1]
+            segment_indices.insert(2, second_list.copy())
+        else:
+            print("Invalid value found for 'initset' in ./initset/initset.csv. It should be a boolean value.")
+            sys.exit("Try init_setting again")
+        # Modify the segment_indices format for optimization
+        
+        return segment_indices
     except Exception as e:
         sys.exit(e)
         return None

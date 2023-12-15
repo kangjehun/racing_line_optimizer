@@ -18,7 +18,7 @@ class Vehicle:
     self.mass = float(vehicle_data["mass"])
     self.drag_coefficient = float(vehicle_data["drag_coefficient"])
     self.engine = Engine(path_engine)
-    print("[ {} is ready. ]\n".format(self.name))
+    print("[ {} is ready. ]".format(self.name))
 
   def engine_d2ax(self, velocity, d):
     """Map current velocity and d to ax output by the engine and brake"""

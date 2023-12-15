@@ -9,14 +9,14 @@ from utils import xy2xy
 
 class TuningParameter:
     """
-    Tunning parameters read by real racing data
+    Tunning parameters read from real racing data
     size : number of nodes in real racing data
     mu   : friction coefficient, overall speed change
-    ax_upper_limit : max acc > 0, gg-diagram
-    ax_lower_limit : max dec < 0, gg-diagram
-    ay_upper_limit : max ay > 0  [특정 위치에서 횡G를 제한하고 싶을 때]
-    ay_lower_limit : min ay >= 0 [특정 위치에서 횡G를 강제로 올리고 싶을 때]
-    (Note) For safety, apply ay_upper_limit after ay_lower_limit & use clipping
+    ax_upper_limit : max acc > 0,   depends on gg-diagram, set maximum lateral acc
+    ax_lower_limit : max dec < 0,   depends on gg-diagram, set minimum lateral acc
+    ay_upper_limit : max ay > 0,    depends on gg-diagram, set maximum lateral acc
+    ay_lower_limit : min ay >= 0,   depends on gg-diagram, set minimum lateral acc
+    TODO: (Change) For safety, ay_upper_limit is applied after ay_lower_limit & use clipping
     Cb   : adjust braking intensity, pulling in or extending braking point
     Cd   : adjust acceleration intensity, pulling in or extending exit point
     alpha_left_max  : left boundary constraint
@@ -32,14 +32,12 @@ class TuningParameter:
             self.k_min = param_corner["K_MIN"]
             self.straight_length_min = param_corner["STRAIGHT_LENGTH_MIN"]
             self.corner_length_min = param_corner["CORNER_LENGTH_MIN"]
-            if self.straight_length_min <= 1 :
-                print("STRAIGHT_LENGTH_MIN should be larger than 1m")
-                sys.exit("Please revise corner.json file in param folder")
+            if self.straight_length_min < 1 :
+                print("[Warning] STRAIGHT_LENGTH_MIN is smaller than 1m. That is too small!")
             if self.corner_length_min < 1 :
-                print("CORNER_LENGTH_MIN should be larger than 1m")
-                sys.exit("Please revise corner.json file in param folder")
+                print("[Warning] CORNER_LENGTH_MIN is smaller than 1m. That is too small!")
         else :
-            print("Warning : There is no corner.json file in param folder, set default values")
+            print("Warning : There is no path_param_corner, set default values")
             self.k_min = 0.020
             self.straight_length_min = 10
             self.corner_length_min = 20
@@ -56,6 +54,7 @@ class TuningParameter:
             self.default_alpha_right_max = param_default["alpha_right_max"]
             self.default_road_slope_rad = param_default["road_slope_rad"]
         else :
+            print("Warning : There is no path_param_default, set default values")
             self.default_mu = 1
             self.default_ax_upper_limit = 10
             self.default_ax_lower_limit = -10
@@ -70,17 +69,17 @@ class TuningParameter:
         self.xy = mid_xy_arr
         self.closed = is_closed(mid_xy_arr)
         self.size = mid_xy_arr[0].size - int(self.closed)
-        self.mu = np.full(self.size, -1, dtype=float)
         # tuning parameters
-        self.ax_upper_limit = np.full(self.size, -1, dtype=float)
-        self.ax_lower_limit = np.full(self.size, -1, dtype=float)
-        self.ay_upper_limit = np.full(self.size, -1, dtype=float)
-        self.ay_lower_limit = np.full(self.size, -1, dtype=float)
-        self.Cb = np.full(self.size, -1, dtype=float)
-        self.Cd = np.full(self.size, -1, dtype=float)
-        self.alpha_left_max = np.full(self.size, -1, dtype=float)
-        self.alpha_right_max = np.full(self.size, -1, dtype=float)
-        self.road_slope_rad = np.full(self.size, -1, dtype=float)
+        self.mu = np.full(self.size, -1, dtype=float) #
+        self.ax_upper_limit = np.full(self.size, -1, dtype=float) # TODO
+        self.ax_lower_limit = np.full(self.size, -1, dtype=float) # TODO
+        self.ay_upper_limit = np.full(self.size, -1, dtype=float) #
+        self.ay_lower_limit = np.full(self.size, -1, dtype=float) #
+        self.Cb = np.full(self.size, -1, dtype=float) #
+        self.Cd = np.full(self.size, -1, dtype=float) #
+        self.alpha_left_max = np.full(self.size, -1, dtype=float) #
+        self.alpha_right_max = np.full(self.size, -1, dtype=float) #
+        self.road_slope_rad = np.full(self.size, -1, dtype=float) #
 
     def update_with_data(self, mu=None, ax_upper_limit=None, ax_lower_limit=None,
                ay_upper_limit=None, ay_lower_limit=None, Cb=None, Cd=None,
@@ -144,7 +143,6 @@ class TuningParameter:
         self.alpha_left_max[self.alpha_left_max == -1] = self.default_alpha_left_max
         self.alpha_right_max[self.alpha_right_max == -1] = self.default_alpha_right_max
         self.road_slope_rad[self.road_slope_rad == -1] = self.default_road_slope_rad
-    
 
     def resize_with_sample(self, dest_xy_arr, dest_is_closed):
         "resize parameters from track control point size to spline sample size"

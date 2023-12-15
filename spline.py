@@ -33,7 +33,6 @@ class Line:
     kappa = self.curvature(s)
     return np.sum(kappa ** 2)
 
-
 def cumulative_distances(points):
   """Returns the cumulative linear distance at each point."""
   d = np.cumsum(np.linalg.norm(np.diff(points, axis=1), axis=0))

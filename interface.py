@@ -6,6 +6,7 @@ import csv
 
 from enum import Enum
 from converter import read_csv_initset
+from utils import match_dimensions
 
 ### Enum variable for user input ###
 class UserInput(Enum):
@@ -44,14 +45,6 @@ def check_yes():
             user_input = input().strip().lower()
     print()
 
-def match_dimensions(np_variable):
-    if np_variable.ndim == 1:
-        if np_variable.size == 0:
-            np_variable = np.array([[]])
-        else:
-            np_variable = np_variable.reshape(1, -1)
-    return np_variable
-
 def reset_directories():
     """ Reset directories for initial setting. """
     print("Resetting directories and files...")
@@ -69,7 +62,7 @@ def reset_directories():
     shutil.copy('./initset/example/ioniq5.json', './model/vehicle/ioniq5.json')
     shutil.copy('./initset/example/ioniq5_engine.json', './model/engine/ioniq5_engine.json')
 
-    print("Done!\n")
+    print("...Done!\n")
 
 def init_setting(corners, straights, track, path_initset):
     is_closed = track.closed
@@ -101,13 +94,13 @@ def init_setting(corners, straights, track, path_initset):
     check_yes()
 
     print("Files within the model folder need modifications")
-    print("model/vehicle.json   : vehicle model")
-    print("model/engine.json    : engine model")
+    print("model/vehicle/ioniq5.json   : vehicle model")
+    print("model/engine/ioniq5_engine.json    : engine model")
     check_yes()
 
     print("Files within the following folders need modifications: param")
-    print("param/corner.json    : tuning parameter default values")
-    print("param/default.json   : corner parameter values")
+    print("param/corner.json    : corner parameter values")
+    print("param/default.json   : tunning parameter default values")
     check_yes()
 
     # Reset directories
@@ -124,7 +117,7 @@ def init_setting(corners, straights, track, path_initset):
     # print(corners) #[DEBUG]
     # print("starights") #[DEBUG]
     # print(straights) #[DEBUG]
-    # print("# of corner : ", num_of_corner) #[DEBUG]
+    # # print("# of corner : ", num_of_corner) #[DEBUG]
     # print("# of straight : ", num_of_straight) #[DEBUG]
 
     # Check if the track has an incorrect shape
@@ -212,7 +205,7 @@ def init_setting(corners, straights, track, path_initset):
     initset_data = read_csv_initset(path_initset)
     # print(initset_data) #[DEBUG]
     initset_data.clear()  # Clear the existing elements from initset_data list
-    for i in range(5):
+    for i in range(4):
         new_dict = {'initset': 'true' if i == 0 else '', **{f"segment{j+1}": '' for j in range(num_of_segment)}}
         initset_data.append(new_dict)
     # Update the segment values
@@ -228,4 +221,21 @@ def init_setting(corners, straights, track, path_initset):
         csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         csv_writer.writeheader()
         csv_writer.writerows(initset_data)
-    print("Done!\n")
+    print("...Done!\n")
+
+
+def check_initset(path_initset):
+    try:
+        with open(path_initset, 'r') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            initset_data = list(csv_reader)
+        #print(initset_data) # [DEBUG]
+        initset_value = initset_data[0]['initset'].lower()
+        if initset_value == 'false':
+            return False
+        elif initset_value == 'true':
+            return True
+        else :
+            sys.exit("initset in ./initset/initset.csv file should be boolean")
+    except Exception as e :
+        sys.exit(e)

@@ -17,16 +17,16 @@ class Track:
         self.friction_coefficient = friction_coefficient
         self.is_closed()
         self.size = self.mid_xy_coordinates[0].size - int(self.closed)
-        self.num_of_segments = self.mid_xy_coordinates[0].size - 1
-        self.alpha_left_max = alpha_left_max
-        self.alpha_right_max = alpha_right_max
+        self.num_of_segments = self.mid_xy_coordinates[0].size - int(1)
+        self.alpha_left_max = alpha_left_max # TODO non -> noc
+        self.alpha_right_max = alpha_right_max # TODO non -> noc
         self.generate_boundaries()
-        # print(self.mid_xy_coordinates)
-        # print(self.closed)
+        # print(self.mid_xy_coordinates) [DEBUG]
+        # print(self.closed) [DEBUG]
         self.mid_spline = Line(self.mid_xy_coordinates, self.closed)
         self.mid_length = self.mid_spline.dists[-1]
-        self.mid_ns = math.ceil(self.mid_length) + 1 # number of samples of spline
-        self.mid_s = np.append(np.arange(0, self.mid_ns - 1), self.mid_length)
+        self.mid_ns = math.ceil(self.mid_length) + 1 # number of samples of spline # TODO [1m]
+        self.mid_s = np.append(np.arange(0, self.mid_ns - 1), self.mid_length) # TODO [1m]
 
     def is_closed(self):
         """ 
@@ -159,7 +159,7 @@ class Track:
                 for j in range(1, n+1):
                   i = j % n
                   if is_corner[i-1]:
-                    if not is_corner[i]: # Corner -> straight
+                    if not is_corner[i]: # Corner -> Straight
                       end = (i + shift) % n
                       if len(corners) > 0: corners = np.vstack((corners, [start, end]))
                       else: corners = np.array([start, end])

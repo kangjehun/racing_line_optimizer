@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 
 def is_closed(left, right):
   """
@@ -9,7 +10,7 @@ def is_closed(left, right):
 
 def is_closed(mid):
   """
-  Compares the first and last cones in each boundary to determine if a track is
+  Compares the first and last coordinate in each boundary to determine if a track is
   open ended or a closed loop.
   """
   return all(mid[:,0]==mid[:,-1])
@@ -101,13 +102,26 @@ def remove_duplicate_points(mid_xy_arr, arrays):
     closed = is_closed(mid_xy_arr)
     # Create a mask of unique indices
     _, unique_indices = np.unique(mid_xy_arr, axis=1, return_index=True)
+    # np.set_printoptions(threshold=np.inf) #[DEBUG]
+    # print(unique_indices) #[DEBUG]
+    # np.set_printoptions(threshold=False) #[DEBUG]
     mask = np.zeros(mid_xy_arr.shape[1], dtype=bool)
     mask[unique_indices] = True
     # Filter the track to remove duplicate points
     filtered_mid_xy_arr = mid_xy_arr[:, mask]
     filtered_arrays = [arr[mask] for arr in arrays]
     if closed :
-        filtered_mid_xy_arr = np.hstack((filtered_mid_xy_arr, filtered_mid_xy_arr[:, 0][:, np.newaxis]))
+        filtered_mid_xy_arr = \
+            np.hstack((filtered_mid_xy_arr, filtered_mid_xy_arr[:, 0][:, np.newaxis]))
         for i in range(len(filtered_arrays)):
             filtered_arrays[i] = np.append(filtered_arrays[i], filtered_arrays[i][0])
     return filtered_mid_xy_arr, filtered_arrays
+
+def match_dimensions(np_variable):
+    """ Match dimenstions of np variable as 2d np array. """
+    if np_variable.ndim == 1:
+        if np_variable.size == 0:
+            np_variable = np.array([[]])
+        else:
+            np_variable = np_variable.reshape(1, -1)
+    return np_variable

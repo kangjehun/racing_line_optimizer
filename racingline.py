@@ -20,8 +20,9 @@ class RacingLine:
     spline samples are taken every meter
     """
 
-    def __init__(self, track, vehicle, tuning_parameter):
+    def __init__(self, track, vehicle, tuning_parameter, is_segment):
         """ Store track and vehicle, and initialize a racing line as centerline. """
+        self.is_segment = is_segment
         self.num_of_update = 0
         self.num_of_update_velocity = 0
         self.track = track
@@ -92,11 +93,11 @@ class RacingLine:
             """ get track boundaries and mid line xy coordinates """
             return self.track.mid_xy_coordinates, self.track.left_boundary, self.track.right_boundary, \
                    self.track.left_opt_boundary, self.track.right_opt_boundary
-        t0 = time.time()
+        # t0 = time.time()
         corners, straights = self.track.segments(self.tuning_parameter.k_min, \
                                                  self.tuning_parameter.corner_length_min, \
                                                  self.tuning_parameter.straight_length_min)
-        # TODO: should be more generatilized
+        # TODO: should be more generalized
         start = straights[0][0] + 1
         mid1  = corners[0] + 1
         mid2  = corners[1] + 1
@@ -109,7 +110,7 @@ class RacingLine:
             getTrack = getTrack,
             x0 = np.full(self.track.size, 0.0),
             method = 'GA',
-            bounds = [-1.0, 1.0],
+            bounds = [-1.0, 1.0], # TODO
             start = start,
             mid1 = mid1,
             mid2 = mid2,
