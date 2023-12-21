@@ -8,21 +8,27 @@ class VelocityProfile:
     """
     Generate and stores a velocity profile for a given racing line and vehicle
     """
-    def __init__(self, vehicle, racing_line_xy_arr, racing_line_samples, curvature, tuning_parameter, length_closed):
+    def __init__(self, vehicle, racing_line_xy_arr, \
+                 racing_line_samples, curvature, \
+                 tuning_parameter, \
+                 length_closed):
         """
-        Generate a velocity profile for the given racing line, vehicle and other constraints
-        racing_line_samples and curvature should not include the overlapping element for closed racing line
+        Generate a velocity profile for the given racing line,
+        vehicle and other constraints.
+        racing_line_samples and curvature should not include the overlapping element 
+        for closed racing line
         The length of a closed racing line should be supplied in length_closed
         if the racing line is not closed, length_closed should be None
         """
         self.vehicle = vehicle
-        self.racing_line_xy_arr = racing_line_xy_arr # include duplicate point of closed track
-        self.racing_line_samples = racing_line_samples # not include duplicate point of closed track
-        self.curvature = curvature
-        self.tuning_parameter = tuning_parameter
+        self.racing_line_xy_arr = racing_line_xy_arr # NOC = NON+1 if closed else NON
+        self.racing_line_samples = racing_line_samples # NON
+        self.curvature = curvature # NON
+        self.tuning_parameter = tuning_parameter # NON of track
         self.max_length_of_closed_track = length_closed
         self.closed = length_closed is not None
-        self.tuning_parameter.resize_with_sample(self.racing_line_xy_arr, self.closed)
+        self.tuning_parameter.resize_with_sample(self.racing_line_xy_arr, \
+                                                 self.closed) # NON
         self.v_max = None
         self.v_acc_limit = None
         self.v_dec_limit = None
@@ -37,7 +43,6 @@ class VelocityProfile:
         # print("ax len   : ", len(self.ax)) #[DEBUG]
         # print("ay len   : ", len(self.ay)) #[DEBUG]
         # print("mu len   : ", len(self.tuning_parameter.mu)) #[DEBUG]
-
         # print(self.racing_line_xy_arr[0].size) # [DEBUG]
         # print(self.v_max.size) # [DEBUG]
         # print(self.v_acc_limit.size) # [DEBUG]
@@ -60,6 +65,9 @@ class VelocityProfile:
         # For safety, keep following sequence!
         v = np.maximum(v_k1, v_k3)
         v = np.minimum(v, v_k2)
+        # For an aggressive tuning, follow these steps
+        # v = np.minimum(v_k1, v_k2)
+        # v = np.maximum(v, v_k3)
         self.v_max = v
 
         # [DEBUG]
@@ -77,11 +85,11 @@ class VelocityProfile:
         v = np.roll(self.v_max, shift)
         k = np.roll(k, shift)
         mu = np.roll(self.tuning_parameter.mu, shift)
-        Cd = np.roll(self.tuning_parameter.Cd, shift) # driving command coeff
+        Cd = np.roll(self.tuning_parameter.Cd, shift) # (Note) driving command coeff != CD
         road_slope_rad = np.roll(self.tuning_parameter.road_slope_rad, shift)
         s_max = self.max_length_of_closed_track
         m = self.vehicle.mass
-        CD = self.vehicle.drag_coefficient # drag coeff != Cd
+        CD = self.vehicle.drag_coefficient # (Note) drag coeff != Cd
         k = self.curvature
         # Limit according to acceleration
         for i in range(s.size):
@@ -106,7 +114,6 @@ class VelocityProfile:
                 v[i] = min(v[i], vlim)
                 # print("Ft: {:.3f}, Fe: {:.3f}, FD: {:.3f}, Fs: {:.3f}, Fx: {: 3f}".format(traction, F_engine, D, F_slope, Fx))
                 # print("ax: {:.3f}".format(ax))
-        
         # Reset shift and return
         self.v_acc_limit = np.roll(v, -shift)
         # for v_acc_limit in self.v_acc_limit:
@@ -133,8 +140,8 @@ class VelocityProfile:
             v_slowest = v[0]
             # Limit according to deceleration
             for i in range(s.size):
-                index = (-shift - i) % s.size # calculate original index (useful)
-                wrap = ((-shift-i) % s.size == 0) # check last point of sample points
+                index = (-shift-i-1) % s.size # calculate original index (useful)
+                wrap = ((-shift-i-1) % s.size == s.size-1) # check last point of sample points
                 # if wrap : print("wrap!!!!") # [DEBUG]
                 # print(i) # [DEBUG]
                 # print((-shift-i) % s.size) # [DEBUG]

@@ -6,7 +6,6 @@ import ray
 
 from utils import divide_alphas, merge_alphas, normalize_alphas, reverse_normalize_alphas
 
-
 class OptimizationResult:
     """
     Stores the optimization result info
@@ -30,40 +29,43 @@ class optimizer:
     """
     Do optimization with given algorithm
     """
-    def __init__(self, costfunc, getxy, getTrack, x0, method, bounds, \
+    def __init__(self, costfunc, getxy, getTrack, x0, method, mutation_bounds, \
                  start, mid1, mid2, end, \
-                 desired_cost=20, curvature_compromise_epsilon=1, \
+                 desired_cost=15, \
                  delta_straight=0.20, delta_corner=0.20, \
-                 max_iteration=5000, num_of_population=1000, \
-                 plot_iteration_max=1000):
+                 max_iteration=500, num_of_population=1000, \
+                 convergence_criteria=10, plot_iteration_max = 100,\
+                 curvature_compromise_epsilon=1):
         self.costfunc           = costfunc
         self.getxy              = getxy
         self.getTrack           = getTrack
         self.x0                 = x0
         self.method             = method
-        self.bound              = bounds
+        self.mutation_bounds    = mutation_bounds
         self.start              = start
         self.mid1               = mid1
         self.mid2               = mid2
         self.end                = end
         self.desired_cost       = desired_cost
-        self.epsilon            = curvature_compromise_epsilon
         self.delta_straight     = delta_straight
         self.delta_corner       = delta_corner
         self.max_iteration      = max_iteration
         self.num_of_population  = num_of_population
+        self.convergence_criteria = convergence_criteria
         self.plot_iteration_max = plot_iteration_max
+        self.epsilon            = curvature_compromise_epsilon
         self.num_of_samples     = x0.size
         self.opt_res            = OptimizationResult(method, self.num_of_samples)
         self.optimize()
 
     def optimize(self):
-        # remote function of Ray
-        @ray.remote
-        def compute_rankedsolution(i, sol, costfunc):
-            eps = sol[i][0]
-            alphas = sol[i][1:]
-            return (eps * costfunc(alphas), sol[i])
+        # [parallelized computation] remote function of Ray
+        if self.method == 'GA_parallel' :
+            @ray.remote
+            def compute_rankedsolution(i, sol, costfunc):
+                eps = sol[i][0]
+                alphas = sol[i][1:]
+                return (eps * costfunc(alphas), sol[i])
         
         # print("num_of_samples", self.num_of_samples) #[DEBUG]
         costfunc = self.costfunc
@@ -80,10 +82,13 @@ class optimizer:
         epsilon = self.epsilon
         delta_straight = self.delta_straight
         delta_corner   = self.delta_corner
+        convergence_threshold = self.convergence_criteria
         plot_iteration_max = self.plot_iteration_max
         iterations = []
         costs = []
-        last_update_count = N
+        last_update_count = convergence_threshold
+        mutation_bounds_start     = self.mutation_bounds[0]
+        mutation_bounds_segment   = self.mutation_bounds[1]
         # get track info
         track_midline_xy, track_left_boundary, track_right_boundary, \
         track_left_opt_boundary, track_right_opt_boundary = getTrack()
@@ -100,8 +105,8 @@ class optimizer:
         track_right_opt_boundary_x = track_right_opt_boundary[:, 0]
         track_right_opt_boundary_y = track_right_opt_boundary[:, 1]
 
-        # Initialize Ray
-        ray.init()
+        # [parallelized computation] Initialize Ray
+        # ray.init()
 
         # variable to store results
         opt_res = self.opt_res
@@ -147,18 +152,25 @@ class optimizer:
                                   transform=plt.gca().transAxes, va='bottom', ha='center', \
                                   color='g', fontsize=8)
         # Figure 2
-        plt.figure(figsize=(20, 5))
+        plt.figure(figsize=(20, 15))
         plt.axis('equal')  # Set equal aspect ratio for x and y axes
         plt.xlabel('local_x')
         plt.ylabel('local_y')
         plt.title('Optimization Result so far...')
-        left_boundary, = plt.plot([], [], color='black', linewidth=0.5) # Left boundary of Track
-        left_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', linewidth=1.0) # Left opt boundary of Track
-        right_boundary, = plt.plot([], [], color='black', linewidth=0.5) # Right boundary of Track
-        right_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', linewidth=1.0) # Right opt boundary of Track
-        reference_line, = plt.plot([], [], color='black', linestyle='--', linewidth=0.5) # Mid Line of Track
-        racing_line, = plt.plot([], [], color='red', linewidth=0.5, label='current racing line')  # Optimized Line
-        best_racing_line, = plt.plot([], [], color='blue', linewidth=0.5, label='best racing line')  # Optimized Line
+        left_boundary, = plt.plot([], [], color='black', \
+                                  linewidth=0.5) # Left boundary of Track
+        left_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', \
+                                      linewidth=1.0) # Left opt boundary of Track
+        right_boundary, = plt.plot([], [], color='black', \
+                                   linewidth=0.5) # Right boundary of Track
+        right_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', \
+                                       linewidth=1.0) # Right opt boundary of Track
+        reference_line, = plt.plot([], [], color='black', linestyle='--', \
+                                   linewidth=0.5) # Mid Line of Track
+        racing_line, = plt.plot([], [], color='red', linewidth=0.5, \
+                                label='current racing line')  # Optimized Line
+        best_racing_line, = plt.plot([], [], color='blue', linewidth=0.5, \
+                                     label='best racing line')  # Optimized Line
         plt.ion()  # Turn on interactive mode
         plt.tight_layout()  # Adjust subplot layout
         plt.legend()
@@ -182,18 +194,21 @@ class optimizer:
                     opt_res.message = "The solution is converged..."
                     break
                 
-                # Parallelized computation
-                sol_id = ray.put(sol)
-                futures = [compute_rankedsolution.remote(i, sol_id, costfunc) for i in range(N)]
-                rankedsolutions = ray.get(futures)
+                # [Parallelized computation]
+                if self.method == 'GA_parallel' :
+                    sol_id = ray.put(sol)
+                    futures = [compute_rankedsolution.remote(i, sol_id, costfunc) \
+                               for i in range(N)]
+                    rankedsolutions = ray.get(futures)
 
                 ################################################################
-                # Non parallelized computation
-                # for i in range(N):
-                #     print("I'm solving solution ", i)
-                #     eps = sol[i][0]
-                #     alphas = sol[i][1:]
-                #     rankedsolutions.append((eps * costfunc(alphas), sol[i]))
+                # [Non parallelized computation]
+                if self.method == 'GA' :
+                    for i in range(N):
+                        print("I'm solving solution ", i)
+                        eps = sol[i][0]
+                        alphas = sol[i][1:]
+                        rankedsolutions.append((eps * costfunc(alphas), sol[i]))
                 ################################################################
 
                 rankedsolutions.sort(key=lambda x: x[0])
@@ -201,7 +216,7 @@ class optimizer:
                 if opt_res.cost > rankedsolutions[0][0]:
                     opt_res.cost = rankedsolutions[0][0]
                     opt_res.update_alphas(rankedsolutions[0][1][1:])
-                    last_update_count = N  # Reset last_update_count
+                    last_update_count = convergence_threshold # Reset last_update_count
                 else:
                     last_update_count -= 1
                 opt_res.iteration += 1
@@ -218,9 +233,10 @@ class optimizer:
                 plt.xlim(iterations[0], iterations[-1])
                 plt.ylim(min(costs), max(costs))
                 # update text annotations
-                best_cost_text.set_text(f'Best Cost: {opt_res.cost:.4f} / Desired Cost: {desired_cost}')
-                current_cost_text.set_text(f'Current Cost: {rankedsolutions[0][0]:.4f} / Desired Cost: {desired_cost}')
-                iteration_text.set_text(f'Iteration: {opt_res.iteration} / Max Iteration: {M}')
+                best_cost_text.set_text(f'Best Cost: {opt_res.cost:.4f}/ Desired Cost: {desired_cost}')
+                current_cost_text.set_text(\
+                    f'Current Cost: {rankedsolutions[0][0]:.4f}/ Desired Cost: {desired_cost}')
+                iteration_text.set_text(f'Iteration: {opt_res.iteration}/ Max Iteration: {M}')
                 count_text.set_text(f'Last Update Count: {last_update_count}')
                 # Figure 2
                 plt.figure(2)
@@ -246,7 +262,7 @@ class optimizer:
                 plt.pause(0.01)  # Pause to update the plot
                 ###############
 
-                # limit the data to the last N iterations
+                # limit the data to the last plot_iteration_max iterations
                 if len(iterations) > plot_iteration_max:
                     iterations.pop(0)
                     costs.pop(0)
@@ -254,14 +270,15 @@ class optimizer:
                 bestsolutions = rankedsolutions[:N // 10]
                 # print(bestsolutions) #[DEBUG]
                 # normalize the solutions
-                norm_eps_arr, norm_s_arr, norm_s1_arr, norm_c_arr, norm_s2_arr = [], [], [], [], []
+                norm_eps_arr, norm_s_arr, norm_s1_arr, norm_c_arr, norm_s2_arr \
+                    = [], [], [], [], []
                 for best_sol in bestsolutions:
                     eps = best_sol[1][0]
                     s = best_sol[1][1]
                     s1 = best_sol[1][2:mid1] - best_sol[1][1:mid1-1]
                     c = best_sol[1][mid1:mid2+1] - best_sol[1][mid1-1:mid2]
                     s2 = best_sol[1][mid2+1:self.end+1] - best_sol[1][mid2:self.end]
-                    norm_eps_arr.append(normalize_alphas(eps))
+                    norm_eps_arr.append(eps) # no need to normalize
                     norm_s_arr.append(normalize_alphas(s))
                     norm_s1_arr.append(normalize_alphas(s1))
                     norm_c_arr.append(normalize_alphas(c))
@@ -271,13 +288,36 @@ class optimizer:
                 # produce new generation by using crossover and mutation
                 new_sol = []
                 for _ in range(N):
-                    eps_new = reverse_normalize_alphas(random.choice(norm_eps_arr)) * 1.0 # No mutation on eps
+                    eps_new = reverse_normalize_alphas(\
+                        random.choice(norm_eps_arr)) # No mutation on eps
                     # print("eps_new : ", eps_new) # [DEBUG]
-                    s_new = np.clip(reverse_normalize_alphas(random.choice(norm_s_arr) * random.uniform(0.75, 1.25)), -1, 1) # starting point is relatively free from mutation
-                    s1_new = np.clip(reverse_normalize_alphas(random.choice(norm_s1_arr) * random.uniform(0.97, 1.03)), -delta_straight, delta_straight) # 6% mutation
+                    s_new = np.clip(reverse_normalize_alphas(\
+                                    random.choice(norm_s_arr) * \
+                                    random.uniform(mutation_bounds_start[0],
+                                                   mutation_bounds_start[1])), \
+                                                   -1, 1) 
+                                    # starting point is relatively free from mutation
+                    s1_new = np.clip(reverse_normalize_alphas(\
+                                    random.choice(norm_s1_arr) * \
+                                    random.uniform(mutation_bounds_segment[0], \
+                                                   mutation_bounds_segment[1])), \
+                                                   -delta_straight, delta_straight) 
+                                    # 6% mutation for straight segment
                     # print("s1_new : ", s1_new) # [DEBUG]
-                    c_new = np.clip(reverse_normalize_alphas(random.choice(norm_c_arr) * random.uniform(0.97, 1.03)), -delta_corner, delta_corner) # 6% mutation
-                    s2_new = np.clip(reverse_normalize_alphas(random.choice(norm_s2_arr) * random.uniform(0.97, 1.03)), -delta_straight, delta_straight) # 6% mutation
+                    # print("mutation_bounds_start : ", \
+                    #       mutation_bounds_start[0], mutation_bounds_start[1])
+                    c_new = np.clip(reverse_normalize_alphas(\
+                                    random.choice(norm_c_arr) * \
+                                    random.uniform(mutation_bounds_segment[0], \
+                                                   mutation_bounds_segment[1])), \
+                                                   -delta_corner, delta_corner) 
+                                    # 6% mutation for corner segment
+                    s2_new = np.clip(reverse_normalize_alphas(\
+                                     random.choice(norm_s2_arr) * \
+                                     random.uniform(mutation_bounds_segment[0], \
+                                                    mutation_bounds_segment[1])), \
+                                                    -delta_straight, delta_straight) 
+                                    # 6% mutation
                     new_sol_element = np.concatenate(([eps_new], [s_new], s1_new, c_new, s2_new))
                     new_sol.append(new_sol_element)
                 new_sol = np.array(new_sol)
@@ -312,8 +352,9 @@ class optimizer:
         # Turn off interactive mode after the loop completes
         plt.ioff()
         plt.show(block=False)  # Display the final plot
-        # Shutdown Ray
-        ray.shutdown()
+        # [parallelized computation] Shutdown Ray
+        if self.method == 'GA_parallel' :
+            ray.shutdown()
         return opt_res
 
         

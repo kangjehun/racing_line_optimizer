@@ -1,0 +1,12 @@
+{
+  "mu": 0.95,
+  "ax_upper_limit": 10.0,
+  "ax_lower_limit": -10.0,
+  "ay_upper_limit": 10.0,
+  "ay_lower_limit": 0.0,
+  "Cb": 1.0,
+  "Cd": 1.0,
+  "alpha_left_max": 0.8,
+  "alpha_right_max": 0.8,
+  "road_slope_rad": 0.0
+}

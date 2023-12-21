@@ -7,7 +7,7 @@ import multiprocessing as mp
 
 from converter import read_csv_track, read_osm_racingline, read_csv_best_alphas
 from converter import convert2osm, read_csv_track_segment_indices
-from utils import xy2xy, remove_duplicate_points, match_dimensions
+from utils import xy2xy, remove_duplicate_points, match_dimensions, is_closed
 from easydict import EasyDict as edict
 from track import Track
 from vehicle import Vehicle
@@ -15,7 +15,7 @@ from plot import plot_track, plot_segment
 from racingline import RacingLine
 from tuning import TuningParameter
 from interface import UserInput
-from interface import get_user_input_init, init_setting, check_initset
+from interface import get_user_input_init, init_setting, check_initset, reset_directories
 from optimization import OptimizationResult
 
 
@@ -140,7 +140,8 @@ if not configs.init_setting:
     is_initialized = check_initset(path_initset)
     if not is_initialized :
         print("...Not initialized yet!")
-        sys.exit("...Do initial setting with --init_setting flag first\n")
+        reset_directories()
+        sys.exit("Do initial setting with --init_setting flag first\n")
     else :
         # TODO
         print("...Done!\n")
@@ -190,29 +191,30 @@ if configs.debug_track_raw:
     print("mu arr                   \n", mu_arr)
 
 ### Read track segment data ###
-print("Read track segment data...")
-segment_indicies = read_csv_track_segment_indices(path_initset)
-print(segment_indicies)
-print("...Done!\n")
+if not configs.init_setting :
+    print("Read track segment data...")
+    segment_indicies = read_csv_track_segment_indices(path_initset)
+    print("segment_indicies\n", segment_indicies)
+    print("...Done!\n")
 
 ### Read references ###
-if not configs.init_setting :
+if not configs.init_setting and (configs.re or configs.noopt):
     print("Reading reference racing lines...")
     # racing lines
     if configs.re or configs.noopt :
         best_racingline = read_osm_racingline(path_best_racingline)
         if best_racingline is None :
-            sys.exit("\nbest_racingline does not exist. \
+            print("\n[Warning] best_racingline does not exist. \
                      Add best_racingline to the best folder.")
     if configs.noopt :
         new_racingline = read_osm_racingline(path_new_racingline)
         if new_racingline is None :
-            sys.exit("\nnew_racingline does not exist. \
+            print("\n[Warning] new_racingline does not exist. \
                      Do first-optimization first.")
     if configs.re :
         data_racingline = read_osm_racingline(path_data_racingline)
         if data_racingline is None :
-            sys.exit("\ndata_racingline does not exist. \
+            print("\n[Warning] data_racingline does not exist. \
                      Add data_racingline to the data folder.")
     # alpha values for initial racing line
     if configs.re :
@@ -288,11 +290,6 @@ if configs.debug_tuning:
     # print("alpha_right_max      :", tuning_parameter.alpha_right_max)
     # print("road_slope_rad       :", tuning_parameter.road_slope_rad)   
 
-# For debugging
-if configs.debug_stop :
-    sys.exit("\nStop for debugging")
-
-
 ### Analyze the segments of track and summarize ###
 # [param] corner detection parameters
 print("Analyzing the segments of track...")
@@ -349,20 +346,44 @@ if configs.re :
         data_Cb_arr, data_Cd_arr, \
         data_alpha_left_max_arr, data_alpha_right_max_arr, \
         data_road_slope_rad_arr = data_racingline
-        data_src_is_closed = track.closed
-        data_dest_xy_arr = track.mid_xy_coordinates[:-1] if track.closed else track.mid_xy_coordinates
+        # check closedness of real racing line data
+        data_src_is_closed = is_closed(data_src_xy_arr)
+        # set dest xy arr for conversion
+        data_dest_xy_arr = track.mid_xy_coordinates[:-1] \
+            if track.closed else track.mid_xy_coordinates
+        # set closedness of data_
         data_dest_is_closed = track.closed
-        # convert the data to track size
-        data_mu_arr = xy2xy(data_mu_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_ax_upper_limit_arr = xy2xy(data_ax_upper_limit_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_ax_lower_limit_arr = xy2xy(data_ax_lower_limit_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_ay_upper_limit_arr = xy2xy(data_ay_upper_limit_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_ay_lower_limit_arr = xy2xy(data_ay_lower_limit_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_Cb_arr = xy2xy(data_Cb_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_Cd_arr = xy2xy(data_Cd_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_alpha_left_max_arr = xy2xy(data_alpha_left_max_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_alpha_right_max_arr = xy2xy(data_alpha_right_max_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
-        data_road_slope_rad_arr = xy2xy(data_road_slope_rad_arr, data_src_xy_arr, data_src_is_closed, data_dest_xy_arr, data_dest_is_closed)
+        # convert 
+        data_mu_arr = xy2xy(data_mu_arr, \
+                            data_src_xy_arr, data_src_is_closed, \
+                            data_dest_xy_arr, data_dest_is_closed)
+        data_ax_upper_limit_arr = xy2xy(data_ax_upper_limit_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_ax_lower_limit_arr = xy2xy(data_ax_lower_limit_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_ay_upper_limit_arr = xy2xy(data_ay_upper_limit_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_ay_lower_limit_arr = xy2xy(data_ay_lower_limit_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_Cb_arr = xy2xy(data_Cb_arr, \
+                            data_src_xy_arr, data_src_is_closed, \
+                            data_dest_xy_arr, data_dest_is_closed)
+        data_Cd_arr = xy2xy(data_Cd_arr, \
+                            data_src_xy_arr, data_src_is_closed, \
+                            data_dest_xy_arr, data_dest_is_closed)
+        data_alpha_left_max_arr = xy2xy(data_alpha_left_max_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_alpha_right_max_arr = xy2xy(data_alpha_right_max_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
+        data_road_slope_rad_arr = xy2xy(data_road_slope_rad_arr, \
+                                        data_src_xy_arr, data_src_is_closed, \
+                                        data_dest_xy_arr, data_dest_is_closed)
         # update tuning parameters with converted data
         tuning_parameter.update_with_data(mu=data_mu_arr,\
                                           ax_upper_limit=data_ax_upper_limit_arr,\
@@ -389,18 +410,8 @@ if configs.re and configs.debug_tuning:
     # print("alpha_left_max       :", tuning_parameter.alpha_left_max)
     # print("alpha_right_max      :", tuning_parameter.alpha_right_max)
     # print("road_slope_rad       :", tuning_parameter.road_slope_rad)
-
-### Create Track Segments for First Optimization ###
-if not configs.noopt and not configs.re:
-    corners_2d = match_dimensions(corners)
-    print("corners\n", corners_2d)
-    num_of_segment = corners_2d.shape[0]
-    for i in range(num_of_segment):
-        pass
-
-# TODO : Update tuning parameters with real racing data
-if configs.re :
-    pass
+elif not configs.re and configs.debug_tuning:
+    print("Warning: The debug_tuning flag can only be used when the re flag is used.")
 
 ### Optimization & Visualization ###
 save = False
@@ -423,13 +434,67 @@ else:
     print("User Input : ", user_input_init) # [DEBUG]
     # do optimization
     if user_input_init == None :
-        # TODO : First opt
-
-
-        sys.exit("First opt is not implemented yet")
+        print("\n[ First-opt : First time to optimization ]")
+        # run optimization
+        opt_res = racingline.minimize_laptime()
+        # print optimization result
+        print("[ Racing Initialization Result ]")
+        if opt_res.success:
+            print("Optimization successful.")
+        else:
+            if opt_res.max_iteration_is_reached:
+                print("Optimization did not converge and stopped due to reaching iteration limit.")
+            else:
+                print("Optimization did not converge and did not reach iteration limit.")
+        print("terminal condition   = ", opt_res.message)
+        print("Final iteration      = ", opt_res.iteration)
+        print("Final cost           = ", opt_res.cost)
+        print("Run time             = {:.3f}".format(opt_res.run_time))
+        print("Lap time             = {:.3f}".format(racingline.lap_time()))
+        # save results
+        # plot (png)
+        save = True
+        plot_track(track, corners, straights, racingline=racingline, \
+                   save=save, path_plot=path_new_racingline_plot)
+        # opt results (txt)
+        with open(path_new_racingline_result, 'a') as result_file:
+            if opt_res.success:
+                result_file.write("Optimization successful.\n")
+            else:
+                if opt_res.max_iteration_is_reached :
+                    result_file.write("Optimization did not converge and stopped" \
+                                      "due to reaching iteration limit.\n")
+                else:
+                    result_file.write("Optimization did not converge and" \
+                                      "did not reach iteration limit.\n")
+            result_file.write(f"terminal condition   : {opt_res.message}\n")
+            result_file.write("run time             : {:.3f} s\n".format(opt_res.run_time))
+            result_file.write("iteration            : {} times\n".format(opt_res.iteration))
+            result_file.write("cost                 : {:.3f}\n".format(opt_res.cost))
+        # alphas (csv)
+        combined_alphas = np.column_stack((opt_res.alphas_left, opt_res.alphas_right))
+        header = "alphas_left,alphas_right"
+        np.savetxt(path_new_racingline_alphas, combined_alphas, delimiter=",", 
+                   header=header, comments="")
+        # osm
+        src_xy_arr = track.mid_xy_coordinates[:-1] if track.closed else track.mid_xy_coordinates
+        src_is_closed = track.closed
+        dest_xy_arr = racingline.xy_arr
+        dest_is_closed = False if racingline.length_closed is None else True
+        # print(racingline.xy_arr) # [DEBUG]
+        racingline.alphas_left = xy2xy(racingline.alphas_left, src_xy_arr, src_is_closed, \
+                                       dest_xy_arr, dest_is_closed)
+        # print(racingline.xy_arr) # [DEBUG]
+        racingline.alphas_right = xy2xy(racingline.alphas_right, src_xy_arr, src_is_closed, \
+                                        dest_xy_arr, dest_is_closed)
+        convert2osm(path_new_racingline, \
+                    racingline.xy_arr, \
+                    racingline.velocity, \
+                    racingline.alphas_left, racingline.alphas_right)
     elif user_input_init == UserInput.QUIT : 
         sys.exit("Quit by user")
-    elif user_input_init == UserInput.RE: # First 
+    elif user_input_init == UserInput.RE:
+        # TODO : Re-opt
         print("\n[ Re-opt : completely re-optimization without use of initial racing line ]")
         # run optimization
         opt_res = racingline.minimize_laptime()
@@ -447,7 +512,6 @@ else:
         print("Final cost           = ", opt_res.cost)
         print("Run time             = {:.3f}".format(opt_res.run_time))
         print("Lap time             = {:.3f}".format(racingline.lap_time()))
-        
         # save results
         # plot (png)
         save = True
@@ -486,11 +550,26 @@ else:
     elif user_input_init == UserInput.BEST :
         init_alphas_left = init_best_alphas_left
         init_alphas_right = init_best_alphas_right
+    # TODO : Do optimization with selected new alphas    
     else : # user_input_init == UserInput.New
         init_alphas_left = init_new_alphas_left
         init_alphas_right = init_new_alphas_right
 
 print("[ End of Code ]")
+
+
+# For debugging
+if configs.debug_stop :
+    sys.exit("\nStop for debugging")
+
+
+
+
+
+
+
+
+
 
 ##################################################################################
         

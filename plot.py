@@ -1,6 +1,7 @@
 import sys
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_hex
 import numpy as np
 import time
 import threading
@@ -9,34 +10,30 @@ from track import Track
 from racingline import RacingLine
 from unit import mps2kph
 
-
 ###############################################################################
 
-def plot_track(track, corners, straights, racingline=None, best=None, \
-               new=None, save=False , path_plot=None):
+def plot_track(track, corners, straights, \
+               racingline=None, new=None, best=None, \
+                save=False , path_plot=None):
     if not isinstance(track, Track):
         raise ValueError("Input must be an instance of the Track class")
     track_size = len(track.mid_line)
 
     # Set color
-    straight_R = 123
-    straight_G = 142
-    straight_B = 169
-    corner_R = 248
-    corner_G = 155
-    corner_B = 108 
-
+    straight_R, straight_G, straight_B = 123, 142, 169
     color_straight = (straight_R/255, straight_B/255, straight_B/255)
+    corner_R, corner_G, corner_B = 248, 155, 108
     color_corner = (corner_R/255, corner_G/255, corner_B/255)
-    hex_color_straight = "#{:02X}{:02X}{:02X}".format(straight_R, straight_G, straight_B)
-    hex_color_corner = "#{:02X}{:02X}{:02X}".format(corner_R, corner_G, corner_B)
+    hex_color_straight = to_hex(color_straight)
+    hex_color_corner = to_hex(color_corner)
 
     # Plot the graph
     fig = plt.figure(figsize=(12, 8))
-    fig.set_facecolor('white') ## 캔버스 색상 설정
-    subplot = fig.add_subplot() ## 프레임(그림 뼈대) 생성
-    subplot.plot([point[0] for point in track.mid_line], [point[1] for point in track.mid_line], \
-             'k.', markersize=0.1, marker='x', label='Midline', zorder=2)
+    fig.set_facecolor('white')
+    subplot = fig.add_subplot()
+    subplot.plot([point[0] for point in track.mid_line], \
+                 [point[1] for point in track.mid_line], \
+                 'k.', markersize=0.1, marker='x', label='Midline', zorder=2)
     
     # Plot segment information
     if corners.ndim == 1:
@@ -51,16 +48,26 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
             for j in range(start, end):
                 current_idx = j % track_size
                 next_idx = (j + 1) % track_size
-                subplot.plot([track.left_boundary[current_idx][0], track.left_boundary[next_idx][0]], \
-                         [track.left_boundary[current_idx][1], track.left_boundary[next_idx][1]], \
-                         color=color_corner, linewidth=2.5)
-                subplot.plot([track.right_boundary[current_idx][0], track.right_boundary[next_idx][0]], \
-                         [track.right_boundary[current_idx][1], track.right_boundary[next_idx][1]], \
-                         color=color_corner, linewidth=2.5)  
-            subplot.scatter(track.left_boundary[start][0], track.left_boundary[start][1], s=50, c='red', marker='o', label=f'c{1}')
-            subplot.scatter(track.right_boundary[start][0], track.right_boundary[start][1], s=50, c='red', marker='o')
-            subplot.annotate(f'c{1}', (track.left_boundary[start][0], track.left_boundary[start][1]), \
-                         textcoords="offset points", xytext=(5, 10), ha='center', fontsize=10, color='red')
+                subplot.plot([track.left_boundary[current_idx][0], \
+                              track.left_boundary[next_idx][0]], \
+                             [track.left_boundary[current_idx][1], \
+                              track.left_boundary[next_idx][1]], \
+                              color=color_corner, linewidth=2.5)
+                subplot.plot([track.right_boundary[current_idx][0], \
+                              track.right_boundary[next_idx][0]], \
+                             [track.right_boundary[current_idx][1], \
+                              track.right_boundary[next_idx][1]], \
+                              color=color_corner, linewidth=2.5)  
+            subplot.scatter(track.left_boundary[start][0], \
+                            track.left_boundary[start][1], \
+                            s=50, c='red', marker='o', label=f'c{1}')
+            subplot.scatter(track.right_boundary[start][0], \
+                            track.right_boundary[start][1], \
+                            s=50, c='red', marker='o')
+            subplot.annotate(f'c{1}', \
+                             (track.left_boundary[start][0], track.left_boundary[start][1]), \
+                             textcoords="offset points", xytext=(5, 10), \
+                             ha='center', fontsize=10, color='red')
     elif corners.ndim == 2: 
         for i, (start, end) in enumerate(corners):
             if end < start:
@@ -68,16 +75,27 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
             for j in range(start, end):
                 current_idx = j % track_size
                 next_idx = (j + 1) % track_size
-                subplot.plot([track.left_boundary[current_idx][0], track.left_boundary[next_idx][0]], \
-                         [track.left_boundary[current_idx][1], track.left_boundary[next_idx][1]], \
-                         color=color_corner, linewidth=2.5)
-                subplot.plot([track.right_boundary[current_idx][0], track.right_boundary[next_idx][0]], \
-                         [track.right_boundary[current_idx][1], track.right_boundary[next_idx][1]], \
-                         color=color_corner, linewidth=2.5)  
-            subplot.scatter(track.left_boundary[start][0], track.left_boundary[start][1], s=50, c='red', marker='o', label=f'c{i + 1}')
-            subplot.scatter(track.right_boundary[start][0], track.right_boundary[start][1], s=50, c='red', marker='o')
-            subplot.annotate(f'c{i + 1}', (track.left_boundary[start][0], track.left_boundary[start][1]), \
-                         textcoords="offset points", xytext=(5, 10), ha='center', fontsize=10, color='red')
+                subplot.plot([track.left_boundary[current_idx][0], \
+                              track.left_boundary[next_idx][0]], \
+                             [track.left_boundary[current_idx][1], \
+                              track.left_boundary[next_idx][1]], \
+                              color=color_corner, linewidth=2.5)
+                subplot.plot([track.right_boundary[current_idx][0], \
+                              track.right_boundary[next_idx][0]], \
+                             [track.right_boundary[current_idx][1], \
+                              track.right_boundary[next_idx][1]], \
+                              color=color_corner, linewidth=2.5)  
+            subplot.scatter(track.left_boundary[start][0], \
+                            track.left_boundary[start][1], \
+                            s=50, c='red', marker='o', \
+                            label=f'c{i + 1}')
+            subplot.scatter(track.right_boundary[start][0], \
+                            track.right_boundary[start][1], \
+                            s=50, c='red', marker='o')
+            subplot.annotate(f'c{i + 1}', \
+                             (track.left_boundary[start][0], track.left_boundary[start][1]), \
+                             textcoords="offset points", xytext=(5, 10), \
+                             ha='center', fontsize=10, color='red')
     else:
         raise ValueError(" Wrong dimension of corners ")
 
@@ -93,16 +111,26 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
             for j in range(start, end):
                 current_idx = j % track_size
                 next_idx = (j + 1) % track_size
-                subplot.plot([track.left_boundary[current_idx][0], track.left_boundary[next_idx][0]], \
-                         [track.left_boundary[current_idx][1], track.left_boundary[next_idx][1]], \
-                         color=color_straight, linewidth=2.5)  # Change the line color for straights to blue
-                subplot.plot([track.right_boundary[current_idx][0], track.right_boundary[next_idx][0]], \
-                         [track.right_boundary[current_idx][1], track.right_boundary[next_idx][1]], \
-                         color=color_straight, linewidth=2.5)  # Change the line color for straights to blue
-            subplot.scatter(track.left_boundary[start][0], track.left_boundary[start][1], s=50, c='blue', marker='s', label=f's{1}')
-            subplot.scatter(track.right_boundary[start][0], track.right_boundary[start][1], s=50, c='blue', marker='s')
-            subplot.annotate(f's{1}', (track.left_boundary[start][0], track.left_boundary[start][1]), \
-                         textcoords="offset points", xytext=(5, 10), ha='center', fontsize=10, color='blue')
+                subplot.plot([track.left_boundary[current_idx][0], \
+                              track.left_boundary[next_idx][0]], \
+                             [track.left_boundary[current_idx][1], \
+                              track.left_boundary[next_idx][1]], \
+                             color=color_straight, linewidth=2.5)  
+                subplot.plot([track.right_boundary[current_idx][0], \
+                              track.right_boundary[next_idx][0]], \
+                             [track.right_boundary[current_idx][1], \
+                              track.right_boundary[next_idx][1]], \
+                              color=color_straight, linewidth=2.5)  
+            subplot.scatter(track.left_boundary[start][0], \
+                            track.left_boundary[start][1], \
+                            s=50, c='blue', marker='s', label=f's{1}')
+            subplot.scatter(track.right_boundary[start][0], \
+                            track.right_boundary[start][1], \
+                            s=50, c='blue', marker='s')
+            subplot.annotate(f's{1}', \
+                             (track.left_boundary[start][0], track.left_boundary[start][1]), \
+                             textcoords="offset points", xytext=(5, 10), \
+                             ha='center', fontsize=10, color='blue')
     elif straights.ndim == 2:
         for i, (start, end) in enumerate(straights):
             if end < start:
@@ -110,26 +138,35 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
             for j in range(start, end):
                 current_idx = j % track_size
                 next_idx = (j + 1) % track_size
-                subplot.plot([track.left_boundary[current_idx][0], track.left_boundary[next_idx][0]], \
-                         [track.left_boundary[current_idx][1], track.left_boundary[next_idx][1]], \
-                         color=color_straight, linewidth=2.5)  # Change the line color for straights to blue
-                subplot.plot([track.right_boundary[current_idx][0], track.right_boundary[next_idx][0]], \
-                         [track.right_boundary[current_idx][1], track.right_boundary[next_idx][1]], \
-                         color=color_straight, linewidth=2.5)  # Change the line color for straights to blue
-            subplot.scatter(track.left_boundary[start][0], track.left_boundary[start][1], s=50, c='blue', marker='s', label=f's{i + 1}')
-            subplot.scatter(track.right_boundary[start][0], track.right_boundary[start][1], s=50, c='blue', marker='s')
-            subplot.annotate(f's{i + 1}', (track.left_boundary[start][0], track.left_boundary[start][1]), \
-                         textcoords="offset points", xytext=(5, 10), ha='center', fontsize=10, color='blue')
+                subplot.plot([track.left_boundary[current_idx][0], \
+                              track.left_boundary[next_idx][0]], \
+                             [track.left_boundary[current_idx][1], \
+                              track.left_boundary[next_idx][1]], \
+                             color=color_straight, linewidth=2.5)
+                subplot.plot([track.right_boundary[current_idx][0], \
+                              track.right_boundary[next_idx][0]], \
+                             [track.right_boundary[current_idx][1], \
+                              track.right_boundary[next_idx][1]], \
+                             color=color_straight, linewidth=2.5)  
+            subplot.scatter(track.left_boundary[start][0], \
+                            track.left_boundary[start][1], \
+                            s=50, c='blue', marker='s', label=f's{i + 1}')
+            subplot.scatter(track.right_boundary[start][0], \
+                            track.right_boundary[start][1], \
+                            s=50, c='blue', marker='s')
+            subplot.annotate(f's{i + 1}', \
+                             (track.left_boundary[start][0], track.left_boundary[start][1]), \
+                             textcoords="offset points", xytext=(5, 10), ha='center', fontsize=10, color='blue')
     else:
         raise ValueError(" Wrong dimension of straights ")
     
     if racingline:
         if not isinstance(racingline, RacingLine):
             raise ValueError("racingline parameter must be an instance of RacingLine")
-        
-        # subplot.plot(racingline.xy_arr[0], racingline.xy_arr[1], 'b.', markersize=1, label='Racing line')
-        subplot.plot(racingline.xy_arr[0], racingline.xy_arr[1], color='blue', linewidth=1.5, label='Racing line', zorder=5)
-
+        # subplot.plot(racingline.xy_arr[0], racingline.xy_arr[1], 'b.', \
+        #              markersize=1, label='Racing line')
+        subplot.plot(racingline.xy_arr[0], racingline.xy_arr[1], \
+                     color='blue', linewidth=1.5, label='Racing line', zorder=5)
         # Plot velocity information
         size = len(racingline.xy_arr[0]) - int(racingline.track.closed)
         # print("# of control points of racing line : ",size) # [DEBUG]
@@ -148,36 +185,34 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
             ax = racingline.velocity.ax[i]
             ay = racingline.velocity.ay[i]
             # Plot velocity markers [for debugging]
-            # subplot.text(x, y, f'{v:.1f}', color='green', fontsize=2, ha='left', va='bottom')
+            subplot.text(x, y, f'{v:.1f}', color='green', fontsize=10, ha='left', va='bottom')
             # subplot.text(x, y, f'{ax:.2f}', color='orange', fontsize=10, ha='right', va='bottom')
             # subplot.text(x, y, f'{ay:.1f}', color='red', fontsize=10, ha='left', va='top')
             # subplot.text(x, y, f'{k:.1f}', color='blue', fontsize=2, ha='right', va='top')
         
     # Plot boundaries for optimization
-    subplot.plot([point[0] for point in track.left_opt_boundary], [point[1] for point in track.left_opt_boundary], \
-              color='gray', linestyle='--', linewidth=0.5, label='Left Boundary')
-    subplot.plot([point[0] for point in track.right_opt_boundary], [point[1] for point in track.right_opt_boundary], \
-              color='gray', linestyle='--', linewidth=0.5, label='Right Boundary')
+    subplot.plot([point[0] for point in track.left_opt_boundary], \
+                 [point[1] for point in track.left_opt_boundary], \
+                  color='gray', linestyle='--', linewidth=0.5, label='Left Boundary')
+    subplot.plot([point[0] for point in track.right_opt_boundary], \
+                 [point[1] for point in track.right_opt_boundary], \
+                  color='gray', linestyle='--', linewidth=0.5, label='Right Boundary')
     
     # Plot best and new racing line
     if best :
         best_xy_arr = best[0]
-        subplot.plot(best_xy_arr[0], best_xy_arr[1], color='red', linewidth=1.5, label='Best racingline', zorder=0)
+        subplot.plot(best_xy_arr[0], best_xy_arr[1], \
+                     color='red', linewidth=1.5, \
+                     label='Best racingline', zorder=0)
     if new :
         new_xy_arr = new[0]
-        subplot.plot(new_xy_arr[0], new_xy_arr[1], color='blue', linestyle='-', linewidth=1.5, label='New racingline', zorder=1)
+        subplot.plot(new_xy_arr[0], new_xy_arr[1], \
+                     color='blue', linestyle='-', linewidth=1.5, \
+                     label='New racingline', zorder=1)
     
     # Legend handling
-    prop = dict(
-    family='DejaVu Sans', 
-    style='italic',
-    size=14 
-    )
-    config_legend = dict(
-    loc = 'upper left',
-    prop=prop,
-    edgecolor='k' #
-    )
+    prop = dict(family='DejaVu Sans', style='italic', size=14)
+    config_legend = dict(loc = 'upper left', prop=prop, edgecolor='k')
     handles, labels = subplot.get_legend_handles_labels()
     dict_labels_handles = dict(zip(labels, handles))
     if best and new and racingline:
@@ -206,7 +241,8 @@ def plot_track(track, corners, straights, racingline=None, best=None, \
     plt.xticks(rotation=40)
     plt.yticks(rotation=40)
     if save:
-        plt.show(block=False)
+        # plt.show(block=False)
+        plt.show()
         if path_plot == None :
             raise ValueError("No path to save the plot")
         plt.savefig(path_plot, dpi=600)
@@ -235,10 +271,14 @@ def plot_segment(track, segment_idx, user_input):
     
     # Plot the segment
     plt.figure(figsize=(15, 10))
-    plt.plot([point[0] for point in segment_points_left], [point[1] for point in segment_points_left], \
+    plt.plot([point[0] for point in segment_points_left], \
+             [point[1] for point in segment_points_left], \
               color='black', linewidth=0.5, label='Left Boundary')
-    plt.plot([point[0] for point in segment_points_mid], [point[1] for point in segment_points_mid], 'k.', markersize=0.3, label='Midline')
-    plt.plot([point[0] for point in segment_points_right], [point[1] for point in segment_points_right], \
+    plt.plot([point[0] for point in segment_points_mid], \
+             [point[1] for point in segment_points_mid], \
+              'k.', markersize=0.3, label='Midline')
+    plt.plot([point[0] for point in segment_points_right], \
+             [point[1] for point in segment_points_right], \
               color='black', linewidth=0.5, label='Right Boundary')
     plt.title(user_input)
     plt.axis('equal')

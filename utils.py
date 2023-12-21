@@ -49,6 +49,9 @@ def normalize_alphas(alphas, alpha_min=-1, alpha_max=1):
 def reverse_normalize_alphas(norm_alphas, alpha_min=-1, alpha_max=1):
     return (norm_alphas * (alpha_max - alpha_min)) + alpha_min
 
+# TODO
+# Need to modify the part of the code responsible for 
+# finding the closest point in a 3D track or interleaved track
 def xy2xy(v_arr, src_xy_arr, src_is_closed, dest_xy_arr, dest_is_closed):
     """ Convert v_arr from src_xy_arr size to dest_xy_arr size"""
     src_size = len(src_xy_arr[0]) - int(src_is_closed)
@@ -76,9 +79,10 @@ def xy2xy(v_arr, src_xy_arr, src_is_closed, dest_xy_arr, dest_is_closed):
     for i in range(1, dest_size):
         min_distance = float('inf')
         is_updated = False
-        # print(">i:", i) #[DEBUG]
-        for j in range(src_size if src_is_closed else (src_size - closest_src_point)):
-            idx_current = (closest_src_point + j) % src_size
+        closest_src_point_prev = closest_src_point
+        # print("i:", i) #[DEBUG]
+        for j in range(src_size if src_is_closed else (src_size - closest_src_point_prev)):
+            idx_current = (closest_src_point_prev + j) % src_size
             # print("closed loop count : ", src_size) #[DEBUG]
             # print("j: ", j) #[DEBUG]
             # print("idx_current: ", idx_current) #[DEBUG]

@@ -1,0 +1,7 @@
+{
+  "name": "rccar",
+  "mass": 3.0,
+  "drag_coefficient": 0.0,
+  "comment" : "mass : 3.0[kg], drag_coefficient : 0.42853[kg/m]",
+  "wheel_radius" : 0.032
+}

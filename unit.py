@@ -2,7 +2,7 @@ import math
 
 def normalize_rad(rad):
     # Normalize the angle to be within the range of -pi to +pi
-    return (rad + math.pi) % (2 * math.pi) - math.pi
+    return rad % (2 * math.pi) - math.pi
 
 def normalize_deg(deg):
     # Normalize the angle in degrees to be within the range of 0 to 360

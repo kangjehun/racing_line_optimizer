@@ -30,14 +30,13 @@ def convert2osm(dest, samples, profile, alphas_left, alphas_right, \
                 lon_0 = 127.20587, lat_0 = 37.29687):
     """
     Convert path to osm format
-    # TODO Q. 127.20587 & 37.29687 where?
     """
     utm_x_origin, utm_y_origin, _, _ = conversion.from_latlon(lat_0, lon_0)
     yaw_bias = (0.0) * math.pi / 180 # To adjust the orientation of the path data
     node_id = -237278
     node_id_list = []
     way_id = -99999999 
-    root = Element('osm', version='0.6', upload='false', generator='JOSM') # root element of XML file
+    root = Element('osm', version='0.6', upload='false', generator='JOSM')
     p = samples.T.reshape(-1, 1, 2) # sample points
     segments = np.concatenate([p[:-1], p[1:]], axis = 1)
     # profile
@@ -77,14 +76,20 @@ def convert2osm(dest, samples, profile, alphas_left, alphas_right, \
         #     continue
 
         # local xy -> LLH
-        local_x = float(segment[0][0]) * math.cos(yaw_bias) + float(segment[0][1]) * math.sin(yaw_bias)
-        local_y = -float(segment[0][0]) * math.sin(yaw_bias) + float(segment[0][1]) * math.cos(yaw_bias)
-        utm_x_global = local_x + utm_x_origin
-        utm_y_global = local_y + utm_y_origin
-        lat, lon = conversion.to_latlon(utm_x_global, utm_y_global, 52, 'N') # TODO Check : UTM Zone 52N
+        local_x = float(segment[0][0]) * math.cos(yaw_bias)\
+                  + float(segment[0][1]) * math.sin(yaw_bias)
+        local_y = -float(segment[0][0]) * math.sin(yaw_bias)\
+                  + float(segment[0][1]) * math.cos(yaw_bias)
+        # utm_x_global = local_x + utm_x_origin
+        # utm_y_global = local_y + utm_y_origin
+        # lat, lon = conversion.to_latlon(utm_x_global, utm_y_global, 52, 'N') # TODO Check : 52N
+        # TODO : Use local xy instead of LLH
+        lat = local_x
+        lon = local_y
         lat_buf = float(lat)
         lon_buf = float(lon)
-        alt_buf = float(140.0) # # TODO Check : 140?
+        # alt_buf = float(140.0) # TODO Check : 140?
+        alt_buf = float(0.0) # TODO : Set altitude as 0
         # alphas of sample points
         alpha_left_buf = float(alpha_left)
         alpha_right_buf = float(alpha_right)
@@ -166,15 +171,21 @@ def convert2osm(dest, samples, profile, alphas_left, alphas_right, \
     else :
         segment = segments[-1]
         # local xy -> LLH
-        local_x = float(segment[1][0]) * math.cos(yaw_bias) + float(segment[1][1]) * math.sin(yaw_bias)
-        local_y = -float(segment[1][0]) * math.sin(yaw_bias) + float(segment[1][1]) * math.cos(yaw_bias)
-        utm_x_global = local_x + utm_x_origin
-        utm_y_global = local_y + utm_y_origin
-        lat, lon = conversion.to_latlon(utm_x_global, utm_y_global, 52, 'N') # TODO Check : UTM Zone 52N
+        local_x = float(segment[1][0]) * math.cos(yaw_bias)\
+                  + float(segment[1][1]) * math.sin(yaw_bias)
+        local_y = -float(segment[1][0]) * math.sin(yaw_bias)\
+                  + float(segment[1][1]) * math.cos(yaw_bias)
+        # TODO : use local_xy instead of LLH
+        # utm_x_global = local_x + utm_x_origin
+        # utm_y_global = local_y + utm_y_origin
+        # lat, lon = conversion.to_latlon(utm_x_global, utm_y_global, 52, 'N') # TODO Check : 52N
+        lat = local_x
+        lon = local_y
         # llh of sample points
         lat_buf = float(lat)
         lon_buf = float(lon)
-        alt_buf = float(140.0) # # TODO Check : 140?
+        # alt_buf = float(140.0) # # TODO Check : 140?
+        alt_buf = float(0.0) # TODO: set altitude as 0
         # alphas of sample points
         alpha_left_buf = float(alphas_left[-1])
         alpha_right_buf = float(alpha_right[-1])
@@ -449,9 +460,9 @@ def read_csv_track_segment_indices(input_csv_initset_file_name):
         initset_value = initset_data[0]['initset'].lower()
 
         if initset_value == 'false':
-            sys.exit("Do init setting first")
+            sys.exit("Do init setting first.")
         elif initset_value == 'true':
-            num_columns = len(initset_data[0]) - 1  # Subtract 1 for 'initset' column
+            num_columns = len(initset_data[0]) - 1
             # Initialize a list to store each column
             column_lists = [[] for _ in range(num_columns)]
             # Iterate through the rows in initset_data
@@ -460,19 +471,19 @@ def read_csv_track_segment_indices(input_csv_initset_file_name):
                 for i in range(1, num_columns + 1):
                     column_name = f'segment{i}'  
                     column_value = int(float(row[column_name]))  
-                    column_lists[i - 1].append(column_value)  
+                    column_lists[i - 1].append(column_value)
+            return column_lists  
             # Transpose the column_lists to get segment_indices
-            segment_indices = list(map(list, zip(*column_lists)))
+            #segment_indices = list(map(list, zip(*column_lists)))
             # Remove the last list from segment_indices
-            segment_indices.pop()
+            #segment_indices.pop()
             # Duplicate the 2nd list as the 3rd list
-            second_list = segment_indices[1]
-            segment_indices.insert(2, second_list.copy())
+            #second_list = segment_indices[1]
+            #segment_indices.insert(2, second_list.copy())
         else:
             print("Invalid value found for 'initset' in ./initset/initset.csv. It should be a boolean value.")
             sys.exit("Try init_setting again")
-        # Modify the segment_indices format for optimization
-        
+        # TODO : Modify the segment_indices format for optimization
         return segment_indices
     except Exception as e:
         sys.exit(e)

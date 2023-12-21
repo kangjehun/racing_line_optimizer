@@ -3,12 +3,13 @@ import math
 import time
 import copy
 import socket
+import sys
 
 from spline import Line
 from velocity import VelocityProfile
 from scipy.optimize import Bounds, minimize
 from tqdm import tqdm
-from utils import divide_alphas, merge_alphas
+from utils import divide_alphas, merge_alphas, match_dimensions
 from optimization import OptimizationResult, optimizer
 
 import matplotlib.pyplot as plt
@@ -36,12 +37,15 @@ class RacingLine:
         """ Update racing line control points and resulting spline samples. """
         self.alphas_left = alphas_left
         self.alphas_right = alphas_right
-        self.racing_line_control_points = self.track.generate_racing_line_control_points(alphas_left, alphas_right)
+        # input (alphas) : track size = # of control points - int(is_closed)
+        # output (racing_line_control_points): # of control points
+        self.racing_line_control_points = \
+            self.track.generate_racing_line_control_points(alphas_left, alphas_right)
         self.racing_line = Line(self.racing_line_control_points, self.track.closed)
         # Sample every meter
         self.length = self.racing_line.dists[-1]
-        self.ns = math.ceil(self.length)
-        self.samples = np.append(np.arange(0, self.ns), self.length)
+        self.ns = math.ceil(self.length) # TODO [1m]
+        self.samples = np.append(np.arange(0, self.ns), self.length) # TODO [1m]
         self.curvature = self.racing_line.curvature(self.samples)
         self.xy_arr = self.racing_line.position(self.samples)
         self.length_closed = self.racing_line.length if self.track.closed else None
@@ -50,15 +54,20 @@ class RacingLine:
 
     def update_velocity(self):
         """ Generate a new velocity profile for the current path. """
-        racing_line_samples = self.samples
+        racing_line_samples = self.samples # NOC : number of coordinates
         curvature = self.curvature
         if self.track.closed:
-            print("track is closed") # [DEBUG]
-            racing_line_samples = racing_line_samples[:-1]
-            curvature = curvature[:-1]
+            # print("track is closed") # [DEBUG]
+            racing_line_samples = racing_line_samples[:-1] #NON : number of nodes
+            curvature = curvature[:-1] # NON : number of nodes
         tuning_parameter = copy.deepcopy(self.tuning_parameter)
         # print("tunning_parameter size : ", tuning_parameter.mu.size) # [DEBUG]
-        self.velocity = VelocityProfile(self.vehicle, self.xy_arr, racing_line_samples, curvature, tuning_parameter, self.length_closed)
+        # input : self.xy_arr (NOC or racingline)
+        # input : racing_linesamples, curvature (NON of racingline)
+        # input : tuning_parameter (NON of Track)
+        self.velocity = VelocityProfile(self.vehicle, self.xy_arr, \
+                                        racing_line_samples, curvature, \
+                                        tuning_parameter, self.length_closed) 
         self.num_of_update_velocity += 1
         print("* update velocity profile", self.num_of_update_velocity)
 
@@ -91,32 +100,60 @@ class RacingLine:
             return self.xy_arr 
         def getTrack():
             """ get track boundaries and mid line xy coordinates """
-            return self.track.mid_xy_coordinates, self.track.left_boundary, self.track.right_boundary, \
+            return self.track.mid_xy_coordinates, \
+                   self.track.left_boundary, self.track.right_boundary, \
                    self.track.left_opt_boundary, self.track.right_opt_boundary
         # t0 = time.time()
         corners, straights = self.track.segments(self.tuning_parameter.k_min, \
                                                  self.tuning_parameter.corner_length_min, \
                                                  self.tuning_parameter.straight_length_min)
+        corners_2d = match_dimensions(corners)
+        straights_2d = match_dimensions(straights)
+        print("corners_2d:\n", corners_2d) # [DEBUG]
+        print("straights_2d:\n", straights_2d) # [DEBUG]
         # TODO: should be more generalized
-        start = straights[0][0] + 1
-        mid1  = corners[0] + 1
-        mid2  = corners[1] + 1
-        end   = straights[1][1] + 1
+        # if not self.track.closed :
+        #     sys.exit("optimization for open circuit is not fully implemented yet...")
+        start = straights_2d[0][0] + 1
+        mid1  = straights_2d[0][1] + 1
+        mid2  = straights_2d[1][0] + 1
+        end   = straights_2d[1][1] + 1
         print(start, mid1, mid2, end) # [DEBUG]
+        # sys.exit("debug") # [DEBUG]
         # run optimization
         opt_res = optimizer(
             costfunc = costfunc,
             getxy = getxy,
             getTrack = getTrack,
             x0 = np.full(self.track.size, 0.0),
-            method = 'GA',
-            bounds = [-1.0, 1.0], # TODO
+            # method = 'GA', # Do not use ray
+            method = 'GA_parallel', # Use ray
+            mutation_bounds = [[0.75, 1.25],[0.97, 1.03]],
             start = start,
             mid1 = mid1,
             mid2 = mid2,
             end = end
         ).opt_res
         return opt_res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     #  def objfun(alphas):
@@ -140,13 +177,6 @@ class RacingLine:
     #  self.update(alphas_left, alphas_right)
     #  return (time.time() - t0), res, alphas_left, alphas_right, \
     #         iteration[-1], cost[-1]
-
-
-
-
-
-
-
 
 ##################################################################################
     
@@ -176,15 +206,6 @@ class RacingLine:
     #     cost = self.racing_line.gamma2()
     #     return (time.time() - t0), res, alphas_left, alphas_right, iteration, cost
     
-
-
-
-
-
-
-
-
-
 
     # def minimise_lap_time(self, iteration, cost, end, init_alphas_left=None, init_alphas_right=None):
     #  """Generate a path that directly minimizes lap time."""

@@ -17,7 +17,8 @@ class Vehicle:
     self.name = vehicle_data["name"]
     self.mass = float(vehicle_data["mass"])
     self.drag_coefficient = float(vehicle_data["drag_coefficient"])
-    self.engine = Engine(path_engine)
+    self.wheel_radius = float(vehicle_data["wheel_radius"])
+    self.engine = Engine(path_engine, self.wheel_radius, self.mass)
     print("[ {} is ready. ]".format(self.name))
 
   def engine_d2ax(self, velocity, d):

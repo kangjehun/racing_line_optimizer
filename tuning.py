@@ -12,10 +12,10 @@ class TuningParameter:
     Tunning parameters read from real racing data
     size : number of nodes in real racing data
     mu   : friction coefficient, overall speed change
-    ax_upper_limit : max acc > 0,   depends on gg-diagram, set maximum lateral acc
-    ax_lower_limit : max dec < 0,   depends on gg-diagram, set minimum lateral acc
-    ay_upper_limit : max ay > 0,    depends on gg-diagram, set maximum lateral acc
-    ay_lower_limit : min ay >= 0,   depends on gg-diagram, set minimum lateral acc
+    ax_upper_limit : min acc > 0, depends on gg-diagram, forcefully set acc on velocity profile
+    ax_lower_limit : min dec > 0, depends on gg-diagram, forcefully set dec on velocity profile
+    ay_upper_limit : max ay > 0,  depends on gg-diagram, set maximum lateral acc
+    ay_lower_limit : min ay >= 0, depends on gg-diagram, set minimum lateral acc
     TODO: (Change) For safety, ay_upper_limit is applied after ay_lower_limit & use clipping
     Cb   : adjust braking intensity, pulling in or extending braking point
     Cd   : adjust acceleration intensity, pulling in or extending exit point
@@ -23,7 +23,6 @@ class TuningParameter:
     alpha_right_max : right boundary constraint
     road_slope_rad  : reflect the road slope effect
     """
-
     def __init__(self, mid_xy_arr, path_param_corner=None, path_param_default=None):
         """Tuning parameters"""
         # Read params
@@ -150,13 +149,22 @@ class TuningParameter:
         self.mu = xy2xy(self.mu, self.xy, self.closed, dest_xy_arr, dest_is_closed)
         # print(self.mu) # [DEBUG]
         # sys.exit("DEBUG") # [DEBUG]
-        self.ax_upper_limit = xy2xy(self.ax_upper_limit, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.ax_lower_limit = xy2xy(self.ax_lower_limit, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.ay_upper_limit = xy2xy(self.ay_upper_limit, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.ay_lower_limit = xy2xy(self.ay_lower_limit, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.Cb = xy2xy(self.Cb, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.Cd = xy2xy(self.Cd, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.alpha_left_max = xy2xy(self.alpha_left_max, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.alpha_right_max = xy2xy(self.alpha_right_max, self.xy, self.closed, dest_xy_arr, dest_is_closed)
-        self.road_slope_rad = xy2xy(self.road_slope_rad, self.xy, self.closed, dest_xy_arr, dest_is_closed)
+        self.ax_upper_limit = xy2xy(self.ax_upper_limit, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
+        self.ax_lower_limit = xy2xy(self.ax_lower_limit, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
+        self.ay_upper_limit = xy2xy(self.ay_upper_limit, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
+        self.ay_lower_limit = xy2xy(self.ay_lower_limit, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
+        self.Cb = xy2xy(self.Cb, self.xy, self.closed, \
+                        dest_xy_arr, dest_is_closed)
+        self.Cd = xy2xy(self.Cd, self.xy, self.closed, \
+                        dest_xy_arr, dest_is_closed)
+        self.alpha_left_max = xy2xy(self.alpha_left_max, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
+        self.alpha_right_max = xy2xy(self.alpha_right_max, self.xy, self.closed, \
+                                     dest_xy_arr, dest_is_closed)
+        self.road_slope_rad = xy2xy(self.road_slope_rad, self.xy, self.closed, \
+                                    dest_xy_arr, dest_is_closed)
         # print("converted parameter size: ", self.mu.size) #[DEBUG]

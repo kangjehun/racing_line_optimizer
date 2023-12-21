@@ -61,7 +61,6 @@ def reset_directories():
     shutil.copy('./initset/example/default.json', './param/default.json')
     shutil.copy('./initset/example/ioniq5.json', './model/vehicle/ioniq5.json')
     shutil.copy('./initset/example/ioniq5_engine.json', './model/engine/ioniq5_engine.json')
-
     print("...Done!\n")
 
 def init_setting(corners, straights, track, path_initset):
@@ -77,10 +76,10 @@ def init_setting(corners, straights, track, path_initset):
     print("High chance of malfunction with multiple tracks.")
     check_yes()
 
-    print("Minimum straight segment length is 2m, minimum corner segment length is 1m")
-    print("Control point interval assumed to be 1m as well")
-    print("Functionality cannot be guaranteed for values less than this.")
-    check_yes()
+    #print("Minimum straight segment length is 2m, minimum corner segment length is 1m")
+    #print("Control point interval assumed to be 1m as well")
+    #print("Functionality cannot be guaranteed for values less than this.")
+    #check_yes()
 
     print("Assuming all corners are part of segments: straight-corner-straight")
     print("the segments are repeated to form the track.")
@@ -90,12 +89,13 @@ def init_setting(corners, straights, track, path_initset):
     check_yes()
 
     print("Files within the track folder need modifications")
-    print("track/Track.csv: track mid points, left width, right width, road slope (optional)")
+    print("track/Track.csv: track mid points, left width, right width (mandatory)")
+    print("track/Track.csv: road slope, friction coefficient (optional)")
     check_yes()
 
     print("Files within the model folder need modifications")
-    print("model/vehicle/ioniq5.json   : vehicle model")
-    print("model/engine/ioniq5_engine.json    : engine model")
+    print("model/vehicle/ioniq5.json        : vehicle model")
+    print("model/engine/ioniq5_engine.json  : engine model")
     check_yes()
 
     print("Files within the following folders need modifications: param")
@@ -109,7 +109,7 @@ def init_setting(corners, straights, track, path_initset):
     # Save track segments data
     corners = match_dimensions(corners)
     straights = match_dimensions(straights)
-    track_size = number_of_samples + 1 if is_closed else number_of_samples
+    track_size = number_of_samples + int(is_closed)
     num_of_corner = corners.shape[0]
     num_of_straight = straights.shape[0]
     num_of_segment = num_of_corner
@@ -117,16 +117,18 @@ def init_setting(corners, straights, track, path_initset):
     # print(corners) #[DEBUG]
     # print("starights") #[DEBUG]
     # print(straights) #[DEBUG]
-    # # print("# of corner : ", num_of_corner) #[DEBUG]
+    # print("# of corner : ", num_of_corner) #[DEBUG]
     # print("# of straight : ", num_of_straight) #[DEBUG]
 
     # Check if the track has an incorrect shape
     if is_closed :
         if(num_of_corner != num_of_straight):
-            raise ValueError("The closed track should have the same number of corners and straights")
+            raise ValueError("The closed track should have the same number of corners \
+                             and straights")
     else :
         if(num_of_corner != num_of_straight-1):
-            raise ValueError("In an open track, there should be one more straight than the corner")
+            raise ValueError("In an open track, there should be one more straight \
+                             than the corner")
 
     # arr's to store indicies
     start_arr = np.array([])
@@ -135,14 +137,15 @@ def init_setting(corners, straights, track, path_initset):
     end_arr = np.array([])
 
     for i in range(num_of_segment):
-        j = i+1 # TO adjust index
+        j = i+1 # To adjust index
         # Create subdirectories and copy files
         subdirectory = f'segment{j}'
         subdirectories = ['./track', './result', './param']
         for directory in subdirectories:
             os.makedirs(os.path.join(directory, subdirectory))
             if directory == './param':
-                shutil.copy('./initset/example/default.json', os.path.join(directory, subdirectory, f'default_segment{j}.json'))
+                shutil.copy('./initset/example/default.json', \
+                            os.path.join(directory, subdirectory, f'default_segment{j}.json'))
 
         start = straights[i-1][0]
         mid1  = corners[i][0]
@@ -168,19 +171,27 @@ def init_setting(corners, straights, track, path_initset):
             road_slope_arr = track.road_slope[start:end + 1]
             friction_coefficient_arr = track.friction_coefficient[start:end + 1]
         elif start > end:
-            # TODO : Not completely debugged yet (error-prone)
-            x_arr = np.concatenate((track.mid_xy_coordinates[0][start:], track.mid_xy_coordinates[0][:end + 1]))
-            y_arr = np.concatenate((track.mid_xy_coordinates[1][start:], track.mid_xy_coordinates[1][:end + 1]))
-            left_widths_arr = np.concatenate((track.left_widths[start:], track.left_widths[:end + 1]))
-            right_widths_arr = np.concatenate((track.right_widths[start:], track.right_widths[:end + 1]))
-            road_slope_arr = np.concatenate((track.road_slope[start:], track.road_slope[:end + 1]))
-            friction_coefficient_arr = np.concatenate((track.friction_coefficient[start:], track.friction_coefficient[:end + 1]))
+            # TODO : Not completely debugged yet
+            x_arr = np.concatenate((track.mid_xy_coordinates[0][start:], \
+                                    track.mid_xy_coordinates[0][:end + 1]))
+            y_arr = np.concatenate((track.mid_xy_coordinates[1][start:], \
+                                    track.mid_xy_coordinates[1][:end + 1]))
+            left_widths_arr = np.concatenate((track.left_widths[start:], \
+                                              track.left_widths[:end + 1]))
+            right_widths_arr = np.concatenate((track.right_widths[start:], \
+                                               track.right_widths[:end + 1]))
+            road_slope_arr = np.concatenate((track.road_slope[start:], \
+                                             track.road_slope[:end + 1]))
+            friction_coefficient_arr = np.concatenate((track.friction_coefficient[start:], \
+                                                       track.friction_coefficient[:end + 1]))
         else:  # start == end
-            raise ValueError("The minimum length of the segment is 4m.")
+            raise ValueError("Track segment cannot be 0m.")
 
         segment_data = np.column_stack((x_arr, y_arr, left_widths_arr, right_widths_arr, road_slope_arr, friction_coefficient_arr))
 
         # Check if columns have the same size
+        # print(segment_data) #[DEBUG]
+        # print("segment_data length : ", len(segment_data)) #[DEBUG]
         if any(len(arr) != len(segment_data) for arr in segment_data.T):
             raise ValueError(f"Warning: Columns in segment {j} do not have the same size.")
         
@@ -192,7 +203,7 @@ def init_setting(corners, straights, track, path_initset):
             delimiter=',',
             header="x,y,wl,wr,slope,friction_coefficient",
             comments="",
-            fmt='%.8f'  # Specify the desired formatting
+            fmt='%.8f'
         )
 
     # print(start_arr)    #[DEBUG]
@@ -206,7 +217,8 @@ def init_setting(corners, straights, track, path_initset):
     # print(initset_data) #[DEBUG]
     initset_data.clear()  # Clear the existing elements from initset_data list
     for i in range(4):
-        new_dict = {'initset': 'true' if i == 0 else '', **{f"segment{j+1}": '' for j in range(num_of_segment)}}
+        new_dict = {'initset': 'true' if i == 0 else '', \
+                    **{f"segment{j+1}": '' for j in range(num_of_segment)}}
         initset_data.append(new_dict)
     # Update the segment values
     for i in range(num_of_segment):

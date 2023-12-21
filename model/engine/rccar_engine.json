@@ -1,0 +1,10 @@
+{
+    "name": "rccar_engine",
+    "engine_type": "rccar",
+    "driving_command_coefficient" : "-0.1243",
+    "driving_command_coefficient2" : "7.2917",
+    "braking_command_coefficient" : "0.0", 
+    "ax_upper_limit_low_speed" : "0.0",
+    "ax_upper_limit_high_speed_coefficient" : "0.0",
+    "ax_upper_limit_high_speed_power" : "0.0"
+}

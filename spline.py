@@ -15,13 +15,13 @@ class Line:
 
   def position(self, s=None):
     """Returns x-y coordinates of sample points."""
-    if s is None: return self.control_points
+    if s is None: return self.control_points # return control points if sample is none
     x, y = splev(s, self.spline)
     return np.array([x, y])
 
   def curvature(self, s=None):
     """Returns sample curvatures, Kappa."""
-    if s is None: s = self.dists
+    if s is None: s = self.dists # calculate curvatures of control points if sample is none
     dx, dy = splev(s, self.spline, 1)
     ddx, ddy = splev(s, self.spline, 2)
     kappa = np.abs((dx * ddy - dy * ddx) / (dx**2 + dy**2)**(3/2))
@@ -29,7 +29,7 @@ class Line:
 
   def gamma2(self, s=None):
     """Returns the sum of the squares of sample curvatures, Gamma^2."""
-    if s is None: s = self.dists
+    if s is None: s = self.dists # calculate gamma2 of control points if sample is none
     kappa = self.curvature(s)
     return np.sum(kappa ** 2)
 

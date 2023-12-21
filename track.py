@@ -25,9 +25,9 @@ class Track:
         # print(self.closed) [DEBUG]
         self.mid_spline = Line(self.mid_xy_coordinates, self.closed)
         self.mid_length = self.mid_spline.dists[-1]
-        self.mid_ns = math.ceil(self.mid_length) + 1 # number of samples of spline # TODO [1m]
+        self.mid_ns = math.ceil(self.mid_length) + 1 # TODO [1m]
         self.mid_s = np.append(np.arange(0, self.mid_ns - 1), self.mid_length) # TODO [1m]
-
+    
     def is_closed(self):
         """ 
         Compares the first and last nodes of mid line of the track
@@ -61,10 +61,12 @@ class Track:
             right_width = self.right_widths[i]
 
             left_point = np.array([x1, y1]) + left_width * normal_vector
-            left_opt_point = np.array([x1, y1]) + left_width * self.alpha_left_max[i] * normal_vector
+            left_opt_point = np.array([x1, y1]) \
+                                + left_width * self.alpha_left_max[i] * normal_vector
             mid = np.array([x1, y1])
             right_point = np.array([x1, y1]) - right_width * normal_vector
-            right_opt_point = np.array([x1, y1]) - right_width * self.alpha_right_max[i] * normal_vector
+            right_opt_point = np.array([x1, y1]) \
+                                - right_width * self.alpha_right_max[i] * normal_vector
 
             self.left_boundary.append(left_point)
             self.left_opt_boundary.append(left_opt_point)
@@ -81,10 +83,12 @@ class Track:
             left_width = self.left_widths[-1]
             right_width = self.right_widths[-1]
             left_point = np.array([x2, y2]) + left_width * normal_vector
-            left_opt_point = np.array([x2, y2]) + left_width * self.alpha_left_max[i] * normal_vector
+            left_opt_point = np.array([x2, y2]) \
+                                + left_width * self.alpha_left_max[i] * normal_vector
             mid = np.array([x2, y2])
             right_point = np.array([x2, y2]) - right_width * normal_vector
-            right_opt_point = np.array([x2, y2]) - right_width * self.alpha_right_max[i] * normal_vector
+            right_opt_point = np.array([x2, y2]) \
+                                - right_width * self.alpha_right_max[i] * normal_vector
 
             self.left_boundary.append(left_point)
             self.left_opt_boundary.append(left_opt_point)
@@ -96,44 +100,46 @@ class Track:
         """Update corner status according to length limits"""
         # Shift to avoid splitting a straight or corner
         # check if there is transition point
-        if self.closed :
-           is_corner = is_corner[:-1]
+        max_dist = dists[-1]
         if not np.argwhere(is_corner != is_corner[0]).size == 0 :
             shift = np.argwhere(is_corner != is_corner[0])[0][0]
             is_corner = np.roll(is_corner, -shift)
-            # Remove short straights
-            start = 0
-            is_updated = True
-            for i in range(1, is_corner.size):
-                if is_corner[i-1]:
-                    if not is_corner[i]:
-                        # Corner to straight, record straight start
-                        start = i
-                        is_updated = False
-                elif is_corner[i]:
-                    # Straight to corner, measure staright and convert if too short
-                    is_corner[start:i] = (dists[i] - dists[start]) < straight_length_min
-                    is_updated = True
-            if not is_updated :
-               is_corner[start:is_corner.size] = (dists[-1] - dists[start] < straight_length_min)
-               is_updated = True
-            # Remove short corners
-            start = 0
-            for i in range(1, is_corner.size):
-                if is_corner[i-1]:
-                    if not is_corner[i]:
-                        # Corner to straight, measure corner and convert if too short
-                        is_corner[start:i] = (dists[i] - dists[start]) > corner_length_min
-                        is_updated = True
-                elif is_corner[i]:
-                    # Straight to corner, record corner start
+            dists = np.roll(dists, -shift)
+        # Remove short straights
+        start = 0
+        is_updated = True
+        for i in range(1, is_corner.size):
+            if is_corner[i-1]:
+                if not is_corner[i]:
+                    # Corner to straight, record straight start
                     start = i
                     is_updated = False
-            if not is_updated :
-               is_corner[start:is_corner.size] = (dists[-1] - dists[start]) > corner_length_min
-            is_corner = np.roll(is_corner, shift)
-        if self.closed :
-           is_corner = np.append(is_corner, is_corner[-1])
+            elif is_corner[i]:
+                # Straight to corner, measure staright and convert if too short
+                dist = (dists[i] - dists[start]) % max_dist
+                is_corner[start:i] = dist < straight_length_min
+                is_updated = True
+        if not is_updated :
+           dist = (dists[i] - dists[start]) % max_dist
+           is_corner[start:is_corner.size] = (dist < straight_length_min)
+           is_updated = True
+        # Remove short corners
+        start = 0
+        for i in range(1, is_corner.size):
+            if is_corner[i-1]:
+                if not is_corner[i]:
+                    # Corner to straight, measure corner and convert if too short
+                    dist = (dists[i] - dists[start]) % max_dist
+                    is_corner[start:i] = dist > corner_length_min
+                    is_updated = True
+            elif is_corner[i]:
+                # Straight to corner, record corner start
+                start = i
+                is_updated = False
+        if not is_updated :
+           dist = (dists[i] - dists[start]) % max_dist
+           is_corner[start:is_corner.size] = dist > corner_length_min
+        is_corner = np.roll(is_corner, shift)
         return is_corner
     
     def segments_idxs(self, is_corner):
@@ -179,8 +185,8 @@ class Track:
                     if is_straight[i]: # Corner -> Straight
                       start = (i + shift) % n
             else : # Track is open
-                # Search for corners
                 n = is_corner.size # = mid_ns = number of samples
+                # Search for corners
                 start = 0
                 is_updated = False
                 for i in range(1, n):
@@ -201,6 +207,7 @@ class Track:
                     is_updated = True
                 # Search for straights
                 start = 0
+                is_updated = False
                 for i in range(1, n):
                   if is_straight[i-1]:
                     if not is_straight[i]: # Straight -> Corner
@@ -235,13 +242,12 @@ class Track:
         Analyse the track to find segments (corners and straights).
         
         k_min: defines the minimum curvature for a corner
-        proximity: corners within this distance are joined
-        length: corners must exceed this length to be accepted
+        corner_length_min: corners must exceed this length to be accepted
+        straight_length_min: straight must exceed this length to be accepted
         
         return: an array of control point index pairs 
         defining the track's corners and straights
         """
-
         is_corner = self.mid_spline.curvature(self.mid_s) > k_min
         # print(is_corner) # [DEBUG]
         is_corner = self.filter_corners(is_corner, self.mid_s, \
