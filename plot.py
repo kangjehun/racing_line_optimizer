@@ -9,6 +9,7 @@ import threading
 from track import Track
 from racingline import RacingLine
 from unit import mps2kph
+from utils import is_closed
 
 ###############################################################################
 
@@ -185,7 +186,7 @@ def plot_track(track, corners, straights, \
             ax = racingline.velocity.ax[i]
             ay = racingline.velocity.ay[i]
             # Plot velocity markers [for debugging]
-            subplot.text(x, y, f'{v:.1f}', color='green', fontsize=10, ha='left', va='bottom')
+            subplot.text(x, y, f'{v:.1f}', color='green', fontsize=1, ha='left', va='bottom')
             # subplot.text(x, y, f'{ax:.2f}', color='orange', fontsize=10, ha='right', va='bottom')
             # subplot.text(x, y, f'{ay:.1f}', color='red', fontsize=10, ha='left', va='top')
             # subplot.text(x, y, f'{k:.1f}', color='blue', fontsize=2, ha='right', va='top')
@@ -209,6 +210,34 @@ def plot_track(track, corners, straights, \
         subplot.plot(new_xy_arr[0], new_xy_arr[1], \
                      color='blue', linestyle='-', linewidth=1.5, \
                      label='New racingline', zorder=1)
+
+    if new :
+        new_xy_arr = new[0]
+        new_v = new[1]
+        new_size = len(new_xy_arr[0]) - int(is_closed(new_xy_arr))
+        new_velocity = [mps2kph(new_v[i]) for i in range(new_size)]
+
+        # Create a colormap
+        cmap = plt.get_cmap('viridis')  # You can choose other colormaps
+
+        # Normalize velocities to map to colors
+        norm = plt.Normalize(min(new_velocity), max(new_velocity))
+
+        # Create a colormap scalar mappable
+        sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+        sm.set_array([])  # An empty array is needed for the mappable
+
+        # Plot the racing line with gradient color
+        for i in range(new_size - 1):
+            x_vals = [new_xy_arr[0][i], new_xy_arr[0][i + 1]]
+            y_vals = [new_xy_arr[1][i], new_xy_arr[1][i + 1]]
+            color_val = norm(new_velocity[i])
+
+            subplot.plot(x_vals, y_vals, color=cmap(color_val), linewidth=3, zorder=1)
+
+        # Add a colorbar for reference
+        cbar = plt.colorbar(sm, ax=subplot)
+        cbar.set_label('Velocity (km/h)')
     
     # Legend handling
     prop = dict(family='DejaVu Sans', style='italic', size=14)
@@ -241,8 +270,8 @@ def plot_track(track, corners, straights, \
     plt.xticks(rotation=40)
     plt.yticks(rotation=40)
     if save:
-        # plt.show(block=False)
-        plt.show()
+        plt.show(block=False)
+        # plt.show()
         if path_plot == None :
             raise ValueError("No path to save the plot")
         plt.savefig(path_plot, dpi=600)

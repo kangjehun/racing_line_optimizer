@@ -1,0 +1,6 @@
+[ New Optimization Result ]
+Optimization did not converge anddid not reach iteration limit.
+terminal condition   : The solution is converged...
+run time             : 460.836 s
+iteration            : 29 times
+cost                 : 12.924

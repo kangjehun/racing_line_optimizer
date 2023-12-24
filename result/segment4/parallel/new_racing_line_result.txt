@@ -1,0 +1,6 @@
+[ New Optimization Result ]
+Optimization successful.
+terminal condition   : The desired cost is reached!
+run time             : 48.566 s
+iteration            : 4 times
+cost                 : 8.771

@@ -121,15 +121,15 @@ class RacingLine:
         mid2  = straights_2d[1][0] + 1
         end   = straights_2d[1][1] + 1
         print(start, mid1, mid2, end) # [DEBUG]
-        # sys.exit("debug") # [DEBUG]
+        sys.exit("debug") # [DEBUG]
         # run optimization
         opt_res = optimizer(
             costfunc = costfunc,
             getxy = getxy,
             getTrack = getTrack,
             x0 = np.full(self.track.size, 0.0),
-            # method = 'GA', # Do not use ray
-            method = 'GA_parallel', # Use ray
+            method = 'GA', # Do not use ray
+            # method = 'GA_parallel', # Use ray
             mutation_bounds = [[0.75, 1.25],[0.97, 1.03]],
             start = start,
             mid1 = mid1,

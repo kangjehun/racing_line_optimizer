@@ -2,6 +2,7 @@ import numpy as np
 import random
 import time
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import ray
 
 from utils import divide_alphas, merge_alphas, normalize_alphas, reverse_normalize_alphas
@@ -31,7 +32,7 @@ class optimizer:
     """
     def __init__(self, costfunc, getxy, getTrack, x0, method, mutation_bounds, \
                  start, mid1, mid2, end, \
-                 desired_cost=15, \
+                 desired_cost=1, \
                  delta_straight=0.20, delta_corner=0.20, \
                  max_iteration=500, num_of_population=1000, \
                  convergence_criteria=10, plot_iteration_max = 100,\
@@ -106,7 +107,8 @@ class optimizer:
         track_right_opt_boundary_y = track_right_opt_boundary[:, 1]
 
         # [parallelized computation] Initialize Ray
-        # ray.init()
+        if self.method == 'GA_parallel' :
+            ray.init()
 
         # variable to store results
         opt_res = self.opt_res
@@ -152,28 +154,23 @@ class optimizer:
                                   transform=plt.gca().transAxes, va='bottom', ha='center', \
                                   color='g', fontsize=8)
         # Figure 2
-        plt.figure(figsize=(20, 15))
-        plt.axis('equal')  # Set equal aspect ratio for x and y axes
-        plt.xlabel('local_x')
-        plt.ylabel('local_y')
-        plt.title('Optimization Result so far...')
-        left_boundary, = plt.plot([], [], color='black', \
-                                  linewidth=0.5) # Left boundary of Track
-        left_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', \
-                                      linewidth=1.0) # Left opt boundary of Track
-        right_boundary, = plt.plot([], [], color='black', \
-                                   linewidth=0.5) # Right boundary of Track
-        right_opt_boundary, = plt.plot([], [], color='gray', linestyle=':', \
-                                       linewidth=1.0) # Right opt boundary of Track
-        reference_line, = plt.plot([], [], color='black', linestyle='--', \
-                                   linewidth=0.5) # Mid Line of Track
-        racing_line, = plt.plot([], [], color='red', linewidth=0.5, \
-                                label='current racing line')  # Optimized Line
-        best_racing_line, = plt.plot([], [], color='blue', linewidth=0.5, \
-                                     label='best racing line')  # Optimized Line
+        fig = plt.figure(figsize=(20, 15))
+        fig.set_facecolor('white')  # Set the face color of the figure
+        fig.suptitle('Optimization Result so far...')  # Set the main title for the entire figure
+        subplot = fig.add_subplot(111, aspect='equal')
+        # Set labels for x and y axes
+        subplot.set_xlabel('local_x')
+        subplot.set_ylabel('local_y')
+        left_boundary, = subplot.plot([], [], color='black', linewidth=0.5)  # Left boundary of Track
+        left_opt_boundary, = subplot.plot([], [], color='gray', linestyle=':', linewidth=1.0)  # Left opt boundary of Track
+        right_boundary, = subplot.plot([], [], color='black', linewidth=0.5)  # Right boundary of Track
+        right_opt_boundary, = subplot.plot([], [], color='gray', linestyle=':', linewidth=1.0)  # Right opt boundary of Track
+        reference_line, = subplot.plot([], [], color='black', linestyle='--', linewidth=0.5)  # Mid Line of Track
+        racing_line, = subplot.plot([], [], color='red', linewidth=0.5, label='current racing line')  # Optimized Line
+        best_racing_line, = subplot.plot([], [], color='blue', linewidth=0.5, label='best racing line')  # Optimized Line
+        plt.legend()
         plt.ion()  # Turn on interactive mode
         plt.tight_layout()  # Adjust subplot layout
-        plt.legend()
         plt.show()
         ########################
 
@@ -240,7 +237,6 @@ class optimizer:
                 count_text.set_text(f'Last Update Count: {last_update_count}')
                 # Figure 2
                 plt.figure(2)
-                plt.axis('equal')  # Set equal aspect ratio for x and y axes
                 racingline_xy = getxy(rankedsolutions[0][1][1:])
                 best_racingline_xy = getxy(opt_res.alphas)
                 left_boundary.set_xdata(track_left_boundary_x)
@@ -257,8 +253,8 @@ class optimizer:
                 racing_line.set_ydata(racingline_xy[1])
                 best_racing_line.set_xdata(best_racingline_xy[0])
                 best_racing_line.set_ydata(best_racingline_xy[1])
-                plt.xlim(min(track_midline_xy[0])-20, max(track_midline_xy[0])+20)
-                plt.ylim(min(track_midline_xy[1])-20, max(track_midline_xy[1])+20)
+                subplot.set_xlim(min(track_midline_xy[0]) - 20, max(track_midline_xy[0]) + 20)
+                subplot.set_ylim(min(track_midline_xy[1]) - 20, max(track_midline_xy[1]) + 20)
                 plt.pause(0.01)  # Pause to update the plot
                 ###############
 

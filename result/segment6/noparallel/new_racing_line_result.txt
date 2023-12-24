@@ -1,0 +1,6 @@
+[ New Optimization Result ]
+Optimization did not converge anddid not reach iteration limit.
+terminal condition   : The optimization is aborted by command line input (Ctrl+C)
+run time             : 4368.126 s
+iteration            : 34 times
+cost                 : 27.718

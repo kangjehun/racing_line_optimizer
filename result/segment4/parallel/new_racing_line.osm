@@ -1,0 +1,2356 @@
+<osm version="0.6" upload="false" generator="JOSM">
+  <node id="-237278" action="modify" lat="-34.31013333977114" lon="119.0867371703741" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.7899388176803441" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237279" action="modify" lat="-33.61456669740693" lon="118.3682755876495" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.8909197201031356" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237280" action="modify" lat="-32.918434423171206" lon="117.6503620449827" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.9743225629958951" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237281" action="modify" lat="-32.22183606824577" lon="116.93290073372188" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.36458961821180236" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237282" action="modify" lat="-31.52519982030807" lon="116.21547621660699" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.9339804999657442" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237283" action="modify" lat="-30.82799442709877" lon="115.49860478948298" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="2.0284552645424565" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237284" action="modify" lat="-30.12944290005113" lon="114.78304504559642" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="3.800911317841675" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237285" action="modify" lat="-29.428418789975385" lon="114.06990744631374" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="6.391784301905177" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237286" action="modify" lat="-28.72331360562254" lon="113.36080499588233" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.633416441894234" />
+    <tag k="ax" v="1.204918749608396" />
+    <tag k="ay" v="9.3163175" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237287" action="modify" lat="-28.012729739592885" lon="112.65719262462835" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.66922243018241" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="7.931214082643705" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237288" action="modify" lat="-27.29757485962512" lon="111.95822638046627" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.66922243018241" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="2.6050789370608887" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237289" action="modify" lat="-26.58075431132383" lon="111.26096879795945" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.66922243018241" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="1.4988092269862352" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237290" action="modify" lat="-25.864522295175014" lon="110.56310653946024" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.66922243018241" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="1.3486060382094287" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237291" action="modify" lat="-25.148990086346714" lon="109.86452678810662" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.66922243018241" />
+    <tag k="ax" v="-6.950000000000159" />
+    <tag k="ay" v="0.2665912641430203" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237292" action="modify" lat="-24.43338327162552" lon="109.16602347749237" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.46216578545235" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.6791436795830126" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237293" action="modify" lat="-23.717421479032637" lon="108.46788400804567" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.25381991671179" />
+    <tag k="ax" v="-5.999373473282276" />
+    <tag k="ay" v="0.26026710121206603" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237294" action="modify" lat="-23.001297299115475" lon="107.7699111168997" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.07291629273919" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="0.13165489760672064" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237295" action="modify" lat="-22.285228909871414" lon="107.07188098704579" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="33.07291629273919" />
+    <tag k="ax" v="-3.8961241193669593" />
+    <tag k="ay" v="0.16864435468563355" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237296" action="modify" lat="-21.569254411956578" lon="106.373754552556" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="32.954901666790015" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.04398771413211551" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237297" action="modify" lat="-20.853308701094367" lon="105.67559859649317" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="32.743328234432724" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.06308637831420873" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237298" action="modify" lat="-20.137328777753385" lon="104.97747772627875" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="32.53037878457303" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.08743786911299882" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237299" action="modify" lat="-19.421292274207104" lon="104.27941488849939" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="32.31602611503771" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.08946807388957277" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237300" action="modify" lat="-18.705202800635035" lon="103.58140638860523" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="32.100242115407774" />
+    <tag k="ax" v="-6.950000000000159" />
+    <tag k="ay" v="0.015011403457314014" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237301" action="modify" lat="-17.98910338331242" lon="102.88340809020634" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="31.882997723987604" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.06029833857379571" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237302" action="modify" lat="-17.273045633344545" lon="102.18536704664497" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="31.664262882116784" />
+    <tag k="ax" v="-6.885716845953709" />
+    <tag k="ay" v="0.1246211778359296" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237303" action="modify" lat="-16.55706535009834" lon="101.48724654544148" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="31.446050788229215" />
+    <tag k="ax" v="-6.27542510254392" />
+    <tag k="ay" v="0.09347984833097743" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237304" action="modify" lat="-15.841155346374974" lon="100.78905397419189" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="31.245851884223022" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.10878010385241432" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237305" action="modify" lat="-15.125323679635214" lon="100.09078108720412" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="31.02262496905772" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.11670280304029251" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237306" action="modify" lat="-14.409566274214272" lon="99.3924320793524" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="30.797780114332973" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.003738092694429807" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237307" action="modify" lat="-13.693799162908686" lon="98.69409301925143" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="30.571281621332194" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.21938905425981514" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237308" action="modify" lat="-12.977878002980034" lon="97.99591188923995" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="30.343092458923884" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.2833536537084484" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237309" action="modify" lat="-12.261789513745603" lon="97.29790237729596" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="30.113174192881154" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.11891953061484423" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237310" action="modify" lat="-11.545793518447976" lon="96.59979799156922" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="29.881486910306247" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.49223933507561396" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237311" action="modify" lat="-10.83015676549359" lon="95.9013253472822" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="29.6479891387393" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.5717699068562927" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237312" action="modify" lat="-10.114927693824473" lon="95.20243524173424" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="29.412637759487055" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.24871320425690788" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237313" action="modify" lat="-9.399925447138639" lon="94.50331308848652" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="29.175387914658543" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.17374210816222113" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237314" action="modify" lat="-8.685076908999077" lon="93.80403376691447" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="28.936192907340175" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.21307105873459242" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237315" action="modify" lat="-7.97042641783082" lon="93.10455205066312" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="28.695004094281007" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.3710456493431138" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237316" action="modify" lat="-7.25602836385283" lon="92.40481251074516" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="28.451770770389736" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.016372543558872105" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237317" action="modify" lat="-6.541595611030526" lon="91.70510839808861" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="28.206440044266554" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.5534271107146997" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237318" action="modify" lat="-5.8266834583709155" lon="91.00589412501994" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="27.958956703904455" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.9426033718736488" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237319" action="modify" lat="-5.11102079803674" lon="90.30744801665818" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="27.70926307159402" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.567852729295755" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237320" action="modify" lat="-4.394865761778656" lon="89.60950678381624" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="27.4572988469515" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.040252503558915936" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237321" action="modify" lat="-3.6786452012716953" lon="88.91163279360919" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="27.203000936859965" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.21541133286846215" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237322" action="modify" lat="-2.962580275260174" lon="88.21359911028617" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="26.946303270964723" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.0883186128552754" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237323" action="modify" lat="-2.2465814517475025" lon="87.51549762406363" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="26.687136601194293" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.17861291503021334" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237324" action="modify" lat="-1.530401813409689" lon="86.81758163565742" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="26.425428283583297" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.4668168906163885" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237325" action="modify" lat="-0.8137687281281326" lon="86.12013127056706" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="26.161102040449368" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.5924734182316255" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237326" action="modify" lat="-0.09659694007525528" lon="85.42323484027695" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="25.89407770071767" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.24652257345602954" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237327" action="modify" lat="0.6208340373296292" lon="84.72660524590201" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="25.62427091588762" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.05707911814650981" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237328" action="modify" lat="1.338213066274692" lon="84.02992215760996" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="25.351592848789686" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.24270667137094357" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237329" action="modify" lat="2.055385572636375" lon="83.33302647021839" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="25.075949831876844" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.033636408080998104" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237330" action="modify" lat="2.772525080954088" lon="82.63609682855036" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="24.797242991324747" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.18249205579819347" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237331" action="modify" lat="3.489855716092546" lon="81.93936391244802" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="24.515367832663745" />
+    <tag k="ax" v="-6.949999999999932" />
+    <tag k="ay" v="0.24640252096555007" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237332" action="modify" lat="4.2074190141336825" lon="81.24287061182194" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="24.23021378301901" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.028129822482242304" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237333" action="modify" lat="4.924949564732554" lon="80.54634358009316" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="23.941663684272328" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.26122356204220765" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237334" action="modify" lat="5.64220093494488" lon="79.84952906255899" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="23.649593230556935" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.23302874603150428" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237335" action="modify" lat="6.359200774348745" lon="79.1524557291923" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="23.353870342425136" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.004588795442047379" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237336" action="modify" lat="7.076158148303568" lon="78.45533872095956" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="23.054354468750677" />
+    <tag k="ax" v="-6.9500000000000455" />
+    <tag k="ay" v="0.003952286781467849" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237337" action="modify" lat="7.793109804696323" lon="77.75821583180864" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="22.750895805897496" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.04319105528782844" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237338" action="modify" lat="8.510009786147412" lon="77.0610398020222" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="22.443334421845705" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.03396188796298695" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237339" action="modify" lat="9.226900841365008" lon="76.36385459333765" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="22.131499270740886" />
+    <tag k="ax" v="-6.950000000000017" />
+    <tag k="ay" v="0.15050438217243708" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237340" action="modify" lat="9.943969764237048" lon="75.66685232916053" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="21.815207080630802" />
+    <tag k="ax" v="-6.94999999999996" />
+    <tag k="ay" v="0.12118002094487246" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237341" action="modify" lat="10.66116922488783" lon="74.9699843746391" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="21.4942610938549" />
+    <tag k="ax" v="-6.94999999999996" />
+    <tag k="ay" v="0.15736190656172716" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237342" action="modify" lat="11.37807429043327" lon="74.27281358783867" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="21.168449635502466" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.6206389000379714" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237343" action="modify" lat="12.094164510301617" lon="73.5748058575026" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="20.837544480355753" />
+    <tag k="ax" v="-6.94999999999996" />
+    <tag k="ay" v="0.33952997048668115" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237344" action="modify" lat="12.809811627354106" lon="72.87634377010525" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="20.501298982523146" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.42495226163403693" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237345" action="modify" lat="13.526259795369063" lon="72.17870359518894" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="20.159445924201503" />
+    <tag k="ax" v="-6.950000000000017" />
+    <tag k="ay" v="1.3678161242096813" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237346" action="modify" lat="14.244773764796648" lon="71.48319100788632" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.811695030229103" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.9517882244669643" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237347" action="modify" lat="14.96491449563369" lon="70.78936296927544" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.45773008268962" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.3797404808609304" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237348" action="modify" lat="15.68585110010167" lon="70.09636195358013" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.09720555397581" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.3023001840000386" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237349" action="modify" lat="16.407388535855553" lon="69.40398655206022" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.72974265628881" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.2272111836986039" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237350" action="modify" lat="17.129175683434063" lon="68.71187139900402" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.354924678973887" />
+    <tag k="ax" v="-6.94999999999996" />
+    <tag k="ay" v="0.6241244950917982" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237351" action="modify" lat="17.8496317300606" lon="68.01837076743762" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.972291450196458" />
+    <tag k="ax" v="-6.950000000000017" />
+    <tag k="ay" v="1.5567629169189767" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237352" action="modify" lat="18.5667879884633" lon="67.32145840160393" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.58133271315928" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="2.180051236166675" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237353" action="modify" lat="19.27928645255709" lon="66.61978470421575" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.181480144935264" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="1.8733999555206318" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237354" action="modify" lat="19.987654136021654" lon="65.91394096214258" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.77209766161659" />
+    <tag k="ax" v="-6.94999999999996" />
+    <tag k="ay" v="0.6672331884577588" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237355" action="modify" lat="20.6943769727691" lon="65.20645049635928" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.35246953737584" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.4419475054914025" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237356" action="modify" lat="21.401894700419213" lon="64.49975491446976" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.921785702954454" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="0.47135989948791973" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237357" action="modify" lat="22.110482985494876" lon="63.79413269657494" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.479123359247604" />
+    <tag k="ax" v="-6.950000000000017" />
+    <tag k="ay" v="0.07308009485366034" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237358" action="modify" lat="22.81888912731941" lon="63.088327772390535" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.023423710020456" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="0.36335728135733525" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237359" action="modify" lat="23.526640897353307" lon="62.38186637746951" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="14.553462130050184" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="0.49210668418653797" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237360" action="modify" lat="24.236199305021792" lon="61.6772198329517" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="14.067809352234086" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="1.5420975224378681" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237361" action="modify" lat="24.95106728466069" lon="60.97796101390534" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.564780129836414" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="1.948972687061041" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237362" action="modify" lat="25.672910414779444" lon="60.28590490790019" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.042364048392638" />
+    <tag k="ax" v="-6.949999999999989" />
+    <tag k="ay" v="1.1084217071741436" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237363" action="modify" lat="26.398347326762348" lon="59.597615106634194" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="12.498130258994935" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="0.8347679094213726" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237364" action="modify" lat="27.12194424679357" lon="58.90739707648604" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="11.92909300704814" />
+    <tag k="ax" v="-6.950000000000003" />
+    <tag k="ay" v="0.2518722223311516" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237365" action="modify" lat="27.84024175237554" lon="58.21162388320321" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="11.331516225589796" />
+    <tag k="ax" v="-6.343442201088202" />
+    <tag k="ay" v="1.9219279846886173" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237366" action="modify" lat="28.562403206495986" lon="57.52026629402603" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="10.757154622325944" />
+    <tag k="ax" v="-6.949999999999996" />
+    <tag k="ay" v="6.823086750310262" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237367" action="modify" lat="29.314672975688943" lon="56.86106565863708" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="10.090410079309384" />
+    <tag k="ax" v="-6.95000000000001" />
+    <tag k="ay" v="3.3988012963743026" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237368" action="modify" lat="30.09117227255554" lon="56.23139013359329" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="9.376373263081435" />
+    <tag k="ax" v="-6.95000000000001" />
+    <tag k="ay" v="5.959819101302971" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237369" action="modify" lat="30.908025329759962" lon="55.65459705147693" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.60327702498463" />
+    <tag k="ax" v="-2.0471428285873117e-07" />
+    <tag k="ay" v="1.738413213342635" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237370" action="modify" lat="31.758240570329047" lon="55.12932584402152" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.60327700118971" />
+    <tag k="ax" v="0.5738279619995481" />
+    <tag k="ay" v="9.316317499999998" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237371" action="modify" lat="32.652717911726974" lon="54.68050959422163" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.669719204403272" />
+    <tag k="ax" v="1.7094670602754078" />
+    <tag k="ay" v="9.3163175" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237372" action="modify" lat="33.584280470998934" lon="54.32050395373445" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.864703334221046" />
+    <tag k="ax" v="-5.962845890600953" />
+    <tag k="ay" v="2.7702681914688045" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237373" action="modify" lat="34.521361095210224" lon="53.97109969082763" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.164390572636014" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="7.1580891755935525" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237374" action="modify" lat="35.48233856900195" lon="53.69734167804531" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.164390572636014" />
+    <tag k="ax" v="1.5944113143929286" />
+    <tag k="ay" v="9.316317499999998" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237375" action="modify" lat="36.46577465061091" lon="53.51499772095665" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.357397684167822" />
+    <tag k="ax" v="-3.8143708625172614" />
+    <tag k="ay" v="1.2814801049922317" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237376" action="modify" lat="37.45523436368838" lon="53.37862437510018" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="7.887797812209638" />
+    <tag k="ax" v="-6.949999999999999" />
+    <tag k="ay" v="8.499667445493714" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237377" action="modify" lat="38.45532885175456" lon="53.37664601260539" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="6.9510685744207095" />
+    <tag k="ax" v="-6.949999999999996" />
+    <tag k="ay" v="0.60778006914936" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237378" action="modify" lat="39.45381108372674" lon="53.42523968007459" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="5.866630576941006" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="1.9320361865672593" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237379" action="modify" lat="40.45200206304842" lon="53.50254036515543" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="5.866630576941006" />
+    <tag k="ax" v="2.5064477366600464" />
+    <tag k="ay" v="9.316317499999998" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237380" action="modify" lat="41.41846808938483" lon="53.746515276901455" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="6.279351065167424" />
+    <tag k="ax" v="-2.0471428285873117e-07" />
+    <tag k="ay" v="3.9034354633213657" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237381" action="modify" lat="42.38135663846836" lon="54.01824104935894" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="6.279351032566239" />
+    <tag k="ax" v="5.098410000000005" />
+    <tag k="ay" v="9.316317499999998" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237382" action="modify" lat="43.3136019496221" lon="54.380456888689494" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="7.044648280091114" />
+    <tag k="ax" v="5.098410000000001" />
+    <tag k="ay" v="4.318430655269969" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237383" action="modify" lat="44.24328752677227" lon="54.74788052799346" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="7.73459044747624" />
+    <tag k="ax" v="5.098410000000008" />
+    <tag k="ay" v="7.409072602338618" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237384" action="modify" lat="45.13292256139843" lon="55.20508439555587" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.367837796598995" />
+    <tag k="ax" v="5.098410000000008" />
+    <tag k="ay" v="6.630296872011197" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237385" action="modify" lat="45.97748506944005" lon="55.73991298027275" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="8.956423917512543" />
+    <tag k="ax" v="5.098410000000001" />
+    <tag k="ay" v="1.618864754334693" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237386" action="modify" lat="46.802877950528774" lon="56.30468314455999" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="9.508646033489244" />
+    <tag k="ax" v="5.098410000000001" />
+    <tag k="ay" v="4.481323026429387" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237387" action="modify" lat="47.607508147807565" lon="56.89835519219804" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="10.030511920644466" />
+    <tag k="ax" v="5.098409999999994" />
+    <tag k="ay" v="1.169603188632908" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237388" action="modify" lat="48.40099118948021" lon="57.50697383047883" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="10.526537388438362" />
+    <tag k="ax" v="5.098410000000001" />
+    <tag k="ay" v="0.8655622098000074" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237389" action="modify" lat="49.19050095926072" lon="58.12070655280711" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="11.000218606472815" />
+    <tag k="ax" v="5.214426378922397" />
+    <tag k="ay" v="0.007717133564171919" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237390" action="modify" lat="49.97951776345194" lon="58.73507936118789" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="11.46445210849762" />
+    <tag k="ax" v="5.012178014522348" />
+    <tag k="ay" v="0.3674760531815825" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237391" action="modify" lat="50.7693297238185" lon="59.34842804831226" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="11.89361249482596" />
+    <tag k="ax" v="4.838963068991461" />
+    <tag k="ay" v="0.6409110583594975" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237392" action="modify" lat="51.556243142328995" lon="59.96549134773217" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="12.293735978743937" />
+    <tag k="ax" v="4.688135165305894" />
+    <tag k="ay" v="2.0286061360282877" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237393" action="modify" lat="52.33531483044977" lon="60.5924255701811" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="12.66934152376022" />
+    <tag k="ax" v="4.555037743428969" />
+    <tag k="ay" v="2.7318939756310052" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237394" action="modify" lat="53.1082575820282" lon="61.22690135869276" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.023912243735861" />
+    <tag k="ax" v="4.436290948900691" />
+    <tag k="ay" v="4.063226346476277" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237395" action="modify" lat="53.88486487363573" lon="61.8568782816146" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.360197305067551" />
+    <tag k="ax" v="4.32936977754855" />
+    <tag k="ay" v="6.82854896115012" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237396" action="modify" lat="54.649045329304734" lon="62.50188986037797" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.68040977403204" />
+    <tag k="ax" v="4.232342007175632" />
+    <tag k="ay" v="3.6019208914322083" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237397" action="modify" lat="55.417661461302295" lon="63.14159998717418" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="13.986361056392854" />
+    <tag k="ax" v="4.143698687625289" />
+    <tag k="ay" v="0.6306848692611263" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237398" action="modify" lat="56.18720557469266" lon="63.78019345979611" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="14.279555069225133" />
+    <tag k="ax" v="4.062240717080357" />
+    <tag k="ay" v="0.970504096727955" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237399" action="modify" lat="56.958541421589864" lon="64.41662188990702" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="14.56125593515868" />
+    <tag k="ax" v="3.987000720406428" />
+    <tag k="ay" v="0.09304776494911585" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237400" action="modify" lat="57.73059712736451" lon="65.05217676284903" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="14.83253774139836" />
+    <tag k="ax" v="3.917187881805731" />
+    <tag k="ay" v="0.0629519351822006" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237401" action="modify" lat="58.50283406649879" lon="65.68751138196906" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.094321833511376" />
+    <tag k="ax" v="3.8521481291974453" />
+    <tag k="ay" v="0.029125103966573487" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237402" action="modify" lat="59.27488637410954" lon="66.32307040268329" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.347405248836466" />
+    <tag k="ax" v="3.791334841824977" />
+    <tag k="ay" v="0.6191195981205594" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237403" action="modify" lat="60.04550331593163" lon="66.96036921965896" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.59248272584142" />
+    <tag k="ax" v="3.734286929835747" />
+    <tag k="ay" v="0.8323027498929193" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237404" action="modify" lat="60.81294817132147" lon="67.6014819118896" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="15.830163973103202" />
+    <tag k="ax" v="3.6806121790940836" />
+    <tag k="ay" v="2.9331545363065517" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237405" action="modify" lat="61.57538510327166" lon="68.24854701467733" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.0609873847632" />
+    <tag k="ax" v="3.629974422236785" />
+    <tag k="ay" v="1.6051303176705871" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237406" action="modify" lat="62.340735932441284" lon="68.89215795938901" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.285431054104656" />
+    <tag k="ax" v="3.5820835339787607" />
+    <tag k="ay" v="2.6758077068677673" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237407" action="modify" lat="63.11109538041145" lon="69.52977003115527" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.503921706247695" />
+    <tag k="ax" v="3.536687540737006" />
+    <tag k="ay" v="0.16096436740750772" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237408" action="modify" lat="63.883270759651126" lon="70.16517818992452" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.7168420094056" />
+    <tag k="ax" v="3.493566333581441" />
+    <tag k="ay" v="3.399922247665176" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237409" action="modify" lat="64.66132759439284" lon="70.79337299156138" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="16.924536609153904" />
+    <tag k="ax" v="3.452526611397161" />
+    <tag k="ay" v="1.9141749159581407" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237410" action="modify" lat="65.44408290850376" lon="71.4157029054479" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.12731714710115" />
+    <tag k="ax" v="3.4133977782064164" />
+    <tag k="ay" v="1.8365783133376719" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237411" action="modify" lat="66.23060175928947" lon="72.03326911517865" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.325466464537048" />
+    <tag k="ax" v="3.3760285879338596" />
+    <tag k="ay" v="1.3950385995853785" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237412" action="modify" lat="67.01984240828119" lon="72.64735313725073" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.519242146556042" />
+    <tag k="ax" v="3.340284380083773" />
+    <tag k="ay" v="0.451395000384666" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237413" action="modify" lat="67.80987575831207" lon="73.26041707178433" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.708879528356196" />
+    <tag k="ax" v="3.3060447865716185" />
+    <tag k="ay" v="0.9314949442452384" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237414" action="modify" lat="68.59861851481394" lon="73.87514042483713" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="17.894594259803053" />
+    <tag k="ax" v="3.2732018172069957" />
+    <tag k="ay" v="0.6000998078582482" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237415" action="modify" lat="69.38628162108448" lon="74.49124661699537" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.076584504750624" />
+    <tag k="ax" v="3.241658251739409" />
+    <tag k="ay" v="0.06202900290050725" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237416" action="modify" lat="70.17397857305679" lon="75.10730953489112" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.25503283647743" />
+    <tag k="ax" v="3.211326281816582" />
+    <tag k="ay" v="0.4705226811853099" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237417" action="modify" lat="70.96242017030369" lon="75.72241915439423" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.430107878808045" />
+    <tag k="ax" v="3.182126357995031" />
+    <tag k="ay" v="0.44049462291468433" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237418" action="modify" lat="71.75137474255783" lon="76.33687068392508" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.601965733236163" />
+    <tag k="ax" v="3.1539862060129735" />
+    <tag k="ay" v="0.6372236110480228" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237419" action="modify" lat="72.53959051775755" lon="76.95226969115541" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.770751225044734" />
+    <tag k="ax" v="3.126839983584233" />
+    <tag k="ay" v="0.3602752588218839" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237420" action="modify" lat="73.32716263263522" lon="77.56849189396688" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="18.936598995587534" />
+    <tag k="ax" v="3.100627554475352" />
+    <tag k="ay" v="0.08303476086954072" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237421" action="modify" lat="74.11537846994176" lon="78.1838920414881" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.09963446322043" />
+    <tag k="ax" v="3.075293860971641" />
+    <tag k="ay" v="3.3117647048381373" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237422" action="modify" lat="74.90733799828585" lon="78.79446429489943" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.259974671597593" />
+    <tag k="ax" v="3.050788379273399" />
+    <tag k="ay" v="0.7438585269027641" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237423" action="modify" lat="75.69807099067881" lon="79.40662510688672" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.417729040985396" />
+    <tag k="ax" v="0.00975391713944646" />
+    <tag k="ay" v="5.581619483669956" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <node id="-237424" action="modify" lat="75.742758859626" lon="79.44162996019124" alt="0.0" alpha_left="0.8" alpha_right="0.0">
+    <tag k="speed" v="19.426576183363526" />
+    <tag k="ax" v="0.0" />
+    <tag k="ay" v="5.860790341900188" />
+    <tag k="mu" v="0.95" />
+    <tag k="ax_upper_limit" v="10.0" />
+    <tag k="ax_lower_limit" v="-10.0" />
+    <tag k="ay_upper_limit" v="10.0" />
+    <tag k="ay_lower_limit" v="0.0" />
+    <tag k="Cb" v="1.0" />
+    <tag k="Cd" v="1.0" />
+    <tag k="alpha_left_max" v="0.8" />
+    <tag k="alpha_right_max" v="0.8" />
+    <tag k="road_slope_rad" v="0.0" />
+  </node>
+  <way id="-99999999" action="modify">
+    <nd ref="-237278" />
+    <nd ref="-237279" />
+    <nd ref="-237280" />
+    <nd ref="-237281" />
+    <nd ref="-237282" />
+    <nd ref="-237283" />
+    <nd ref="-237284" />
+    <nd ref="-237285" />
+    <nd ref="-237286" />
+    <nd ref="-237287" />
+    <nd ref="-237288" />
+    <nd ref="-237289" />
+    <nd ref="-237290" />
+    <nd ref="-237291" />
+    <nd ref="-237292" />
+    <nd ref="-237293" />
+    <nd ref="-237294" />
+    <nd ref="-237295" />
+    <nd ref="-237296" />
+    <nd ref="-237297" />
+    <nd ref="-237298" />
+    <nd ref="-237299" />
+    <nd ref="-237300" />
+    <nd ref="-237301" />
+    <nd ref="-237302" />
+    <nd ref="-237303" />
+    <nd ref="-237304" />
+    <nd ref="-237305" />
+    <nd ref="-237306" />
+    <nd ref="-237307" />
+    <nd ref="-237308" />
+    <nd ref="-237309" />
+    <nd ref="-237310" />
+    <nd ref="-237311" />
+    <nd ref="-237312" />
+    <nd ref="-237313" />
+    <nd ref="-237314" />
+    <nd ref="-237315" />
+    <nd ref="-237316" />
+    <nd ref="-237317" />
+    <nd ref="-237318" />
+    <nd ref="-237319" />
+    <nd ref="-237320" />
+    <nd ref="-237321" />
+    <nd ref="-237322" />
+    <nd ref="-237323" />
+    <nd ref="-237324" />
+    <nd ref="-237325" />
+    <nd ref="-237326" />
+    <nd ref="-237327" />
+    <nd ref="-237328" />
+    <nd ref="-237329" />
+    <nd ref="-237330" />
+    <nd ref="-237331" />
+    <nd ref="-237332" />
+    <nd ref="-237333" />
+    <nd ref="-237334" />
+    <nd ref="-237335" />
+    <nd ref="-237336" />
+    <nd ref="-237337" />
+    <nd ref="-237338" />
+    <nd ref="-237339" />
+    <nd ref="-237340" />
+    <nd ref="-237341" />
+    <nd ref="-237342" />
+    <nd ref="-237343" />
+    <nd ref="-237344" />
+    <nd ref="-237345" />
+    <nd ref="-237346" />
+    <nd ref="-237347" />
+    <nd ref="-237348" />
+    <nd ref="-237349" />
+    <nd ref="-237350" />
+    <nd ref="-237351" />
+    <nd ref="-237352" />
+    <nd ref="-237353" />
+    <nd ref="-237354" />
+    <nd ref="-237355" />
+    <nd ref="-237356" />
+    <nd ref="-237357" />
+    <nd ref="-237358" />
+    <nd ref="-237359" />
+    <nd ref="-237360" />
+    <nd ref="-237361" />
+    <nd ref="-237362" />
+    <nd ref="-237363" />
+    <nd ref="-237364" />
+    <nd ref="-237365" />
+    <nd ref="-237366" />
+    <nd ref="-237367" />
+    <nd ref="-237368" />
+    <nd ref="-237369" />
+    <nd ref="-237370" />
+    <nd ref="-237371" />
+    <nd ref="-237372" />
+    <nd ref="-237373" />
+    <nd ref="-237374" />
+    <nd ref="-237375" />
+    <nd ref="-237376" />
+    <nd ref="-237377" />
+    <nd ref="-237378" />
+    <nd ref="-237379" />
+    <nd ref="-237380" />
+    <nd ref="-237381" />
+    <nd ref="-237382" />
+    <nd ref="-237383" />
+    <nd ref="-237384" />
+    <nd ref="-237385" />
+    <nd ref="-237386" />
+    <nd ref="-237387" />
+    <nd ref="-237388" />
+    <nd ref="-237389" />
+    <nd ref="-237390" />
+    <nd ref="-237391" />
+    <nd ref="-237392" />
+    <nd ref="-237393" />
+    <nd ref="-237394" />
+    <nd ref="-237395" />
+    <nd ref="-237396" />
+    <nd ref="-237397" />
+    <nd ref="-237398" />
+    <nd ref="-237399" />
+    <nd ref="-237400" />
+    <nd ref="-237401" />
+    <nd ref="-237402" />
+    <nd ref="-237403" />
+    <nd ref="-237404" />
+    <nd ref="-237405" />
+    <nd ref="-237406" />
+    <nd ref="-237407" />
+    <nd ref="-237408" />
+    <nd ref="-237409" />
+    <nd ref="-237410" />
+    <nd ref="-237411" />
+    <nd ref="-237412" />
+    <nd ref="-237413" />
+    <nd ref="-237414" />
+    <nd ref="-237415" />
+    <nd ref="-237416" />
+    <nd ref="-237417" />
+    <nd ref="-237418" />
+    <nd ref="-237419" />
+    <nd ref="-237420" />
+    <nd ref="-237421" />
+    <nd ref="-237422" />
+    <nd ref="-237423" />
+    <nd ref="-237424" />
+  </way>
+</osm>

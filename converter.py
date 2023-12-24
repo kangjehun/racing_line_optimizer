@@ -306,9 +306,12 @@ def read_osm_racingline(input_osm_file_name, lon_0 = 127.20587, lat_0 = 37.29687
         # xy
         lat = float(input_node.attrib['lat'])
         lon = float(input_node.attrib['lon'])
-        utm_x, utm_y, _, _ = conversion.from_latlon(lat, lon)
-        utm_x = utm_x - utm_x_origin
-        utm_y = utm_y - utm_y_origin
+        # TODO : Use local xy instead of LLH
+        # utm_x, utm_y, _, _ = conversion.from_latlon(lat, lon)
+        # utm_x = utm_x - utm_x_origin
+        # utm_y = utm_y - utm_y_origin
+        utm_x = lat
+        utm_y = lon
         # profiles
         v  = float(input_node.find("tag[@k='speed']").attrib['v'])
         ax = float(input_node.find("tag[@k='ax']").attrib['v'])
