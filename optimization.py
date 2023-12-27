@@ -107,7 +107,7 @@ class optimizer:
         track_right_opt_boundary_y = track_right_opt_boundary[:, 1]
 
         # [parallelized computation] Initialize Ray
-        if self.method == 'GA_parallel' :
+        if self.method == 'PGA' :
             ray.init()
 
         # variable to store results
@@ -116,8 +116,8 @@ class optimizer:
         sol = np.zeros((N, n + 1))
         for i in range(N):
             sol[i][0] = epsilon
-            sol[i][1] = random.uniform(-1, 1)
-            for j in range(2, end + 1):
+            sol[i][1] = random.uniform(-1, 1) # Large mutation at first point
+            for j in range(2, end + 1): # Relatively small mutation at rest points
                 if 2 <= j < mid1:
                     sol[i][j] = random.uniform(-delta_straight, delta_straight)
                 elif self.mid1 <= j <= self.mid2:
@@ -192,7 +192,7 @@ class optimizer:
                     break
                 
                 # [Parallelized computation]
-                if self.method == 'GA_parallel' :
+                if self.method == 'PGA' :
                     sol_id = ray.put(sol)
                     futures = [compute_rankedsolution.remote(i, sol_id, costfunc) \
                                for i in range(N)]
@@ -349,7 +349,7 @@ class optimizer:
         plt.ioff()
         plt.show(block=False)  # Display the final plot
         # [parallelized computation] Shutdown Ray
-        if self.method == 'GA_parallel' :
+        if self.method == 'PGA' :
             ray.shutdown()
         return opt_res
 

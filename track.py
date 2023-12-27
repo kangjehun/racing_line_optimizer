@@ -249,7 +249,7 @@ class Track:
         defining the track's corners and straights
         """
         is_corner = self.mid_spline.curvature(self.mid_s) > k_min
-        # print(is_corner) # [DEBUG]
+        print(is_corner) # [DEBUG]
         is_corner = self.filter_corners(is_corner, self.mid_s, \
                                         straight_length_min, corner_length_min)
         s_corners, s_straights = self.segments_idxs(is_corner)

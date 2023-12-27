@@ -7,6 +7,7 @@ import sys
 
 from spline import Line
 from velocity import VelocityProfile
+from segment import Segment 
 from scipy.optimize import Bounds, minimize
 from tqdm import tqdm
 from utils import divide_alphas, merge_alphas, match_dimensions
@@ -60,7 +61,7 @@ class RacingLine:
         curvature = self.curvature
         if self.track.closed:
             # print("track is closed") # [DEBUG]
-            racing_line_samples = racing_line_samples[:-1] #NON : number of nodes
+            racing_line_samples = racing_line_samples[:-1] # NON : number of nodes
             curvature = curvature[:-1] # NON : number of nodes
         tuning_parameter = copy.deepcopy(self.tuning_parameter)
         # print("tunning_parameter size : ", tuning_parameter.mu.size) # [DEBUG]
@@ -113,6 +114,9 @@ class RacingLine:
         straights_2d = match_dimensions(straights)
         print("corners_2d:\n", corners_2d) # [DEBUG]
         print("straights_2d:\n", straights_2d) # [DEBUG]
+        segment_info = Segment(corners_2d, straights_2d, self.track.is_closed)
+        print(segment_info.start)
+        print(segment_info.end)
         # TODO: should be more generalized
         # if not self.track.closed :
         #     sys.exit("optimization for open circuit is not fully implemented yet...")
@@ -120,16 +124,16 @@ class RacingLine:
         mid1  = straights_2d[0][1] + 1
         mid2  = straights_2d[1][0] + 1
         end   = straights_2d[1][1] + 1
-        print(start, mid1, mid2, end) # [DEBUG]
+        # print(start, mid1, mid2, end) # [DEBUG]
         sys.exit("debug") # [DEBUG]
         # run optimization
         opt_res = optimizer(
             costfunc = costfunc,
             getxy = getxy,
             getTrack = getTrack,
-            x0 = np.full(self.track.size, 0.0),
+            x0 = np.full(self.track.size, 0.0), # NON
             method = 'GA', # Do not use ray
-            # method = 'GA_parallel', # Use ray
+            # method = 'PGA', # Use ray
             mutation_bounds = [[0.75, 1.25],[0.97, 1.03]],
             start = start,
             mid1 = mid1,

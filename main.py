@@ -191,11 +191,11 @@ if configs.debug_track_raw:
     print("mu arr                   \n", mu_arr)
 
 ### Read track segment data ###
-if not configs.init_setting :
-    print("Read track segment data...")
-    segment_indicies = read_csv_track_segment_indices(path_initset)
-    print("segment_indicies\n", segment_indicies)
-    print("...Done!\n")
+# if not configs.init_setting :
+#     print("Read track segment data...")
+#     segment_indicies = read_csv_track_segment_indices(path_initset)
+#     print("segment_indicies\n", segment_indicies)
+#     print("...Done!\n")
 
 ### Read references ###
 if not configs.init_setting and (configs.re or configs.noopt):
